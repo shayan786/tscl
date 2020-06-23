@@ -1,0 +1,15 @@
+.login {
+
+  .links {
+    margin-top: 1rem;
+
+    a {
+      color: $primary;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  } 
+
+}

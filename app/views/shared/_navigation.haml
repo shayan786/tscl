@@ -1,0 +1,22 @@
+%nav
+  %a{href: '/'}
+    = image_tag 'tscl_logo.svg', class: 'logo', title: 'TSCL'
+  .divider
+  .items
+    - @navigation.each do |nav|
+      %a{href: "#{nav[:url]}", :class => ("selected" if nav[:url] == request.path)}
+        %i{class: "fa fa-#{nav[:icon]}"}
+        = nav[:title]
+  .actions
+    - @actions.each do |action|
+      - if action[:title] == 'divider'
+        .divider
+      - else
+        - if action[:title] == 'Logout'
+          = link_to('Logout', destroy_user_session_path, method: 'delete')
+        - else
+          %a{href: "#{action[:url]}"}
+            - if action[:icon]
+              %i{class: "fa fa-#{action[:icon]}"}
+            = action[:title]
+

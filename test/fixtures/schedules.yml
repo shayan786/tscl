@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-02-27
+  home_id: 1
+  away_id: 1
+  umpire_id: 1
+
+two:
+  date: 2020-02-27
+  home_id: 1
+  away_id: 1
+  umpire_id: 1

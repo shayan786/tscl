@@ -28,7 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'rails_admin', '~> 2.0'
+gem 'rails_admin_import', '~> 2.2'
 gem "haml-rails", "~> 1.0"
+gem 'bootstrap', '~> 4.4.1'
+gem 'jquery-rails'
+gem 'font-awesome-rails'
+gem 'devise'
+gem 'mini_magick'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -51,6 +57,9 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem "rack-livereload"
 end
 
 group :test do

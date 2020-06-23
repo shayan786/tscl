@@ -1,0 +1,86 @@
+nav {
+  width: 225px;
+  height: 100vh;
+  border-right: 1px solid $secondary;
+  padding: 1rem 0;
+  position: relative;
+
+  .divider {
+    margin: 1rem 0 1rem 0.8rem;
+    width: 85%;
+    height: 1px;
+    background: rgba(255,255,255, 0.5);
+  }
+
+  .items {
+    display: flex;
+    flex-flow: column nowrap;
+
+    a {
+      padding: 0.4rem 0.7rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: $font-color-default;
+      transition: background $duration-fast $easing-standard;
+
+      &:hover {
+        background: $font-color-hover;
+        transition: background $duration-fast $easing-standard;
+      }
+
+      &.selected {
+        color: $primary;
+      }
+
+      .fa {
+        font-size: 1rem;
+        width: 1.5rem;
+
+      }
+    }
+  }
+
+  .actions {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    a {
+      padding: 0.4rem 0.7rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      color: $font-color-default;
+      transition: background $duration-fast $easing-standard;
+
+      &:hover {
+        background: $font-color-hover;
+        transition: background $duration-fast $easing-standard;
+      }
+
+      &.selected {
+        color: $primary;
+      }
+
+      .fa {
+        font-size: 1rem;
+        width: 1.5rem;
+
+      }
+    }
+
+    .divider {
+      margin: 0.4rem 0 0.4rem 0.6rem;
+      width: 90%;
+      height: 1px;
+      background: rgba(255,255,255, 0.5);
+    }
+  }
+}
+
+.logo {
+  width: 140px;
+  margin-left: 25px;
+}
