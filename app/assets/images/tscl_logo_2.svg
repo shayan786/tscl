@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="547px" height="119px" viewBox="0 0 547 119" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" stroke="#979797">
+            <polygon id="Star" fill="#ED321E" points="51.8325801 79.75 19.7982839 98.5914262 27.9162901 62.9207131 0 37.6585738 37.815432 32.4542869 51.8325801 0 65.8497283 32.4542869 103.66516 37.6585738 75.7488702 62.9207131 83.8668764 98.5914262"></polygon>
+            <polygon id="Star-Copy-2" fill="#4059B0" points="184.16516 79.75 152.130864 98.5914262 160.24887 62.9207131 132.33258 37.6585738 170.148012 32.4542869 184.16516 0 198.182308 32.4542869 235.99774 37.6585738 208.08145 62.9207131 216.199457 98.5914262"></polygon>
+            <polygon id="Star-Copy" fill="#FFFFFF" points="116.16516 98.75 84.130864 117.591426 92.2488702 81.9207131 64.3325801 56.6585738 102.148012 51.4542869 116.16516 19 130.182308 51.4542869 167.99774 56.6585738 140.08145 81.9207131 148.199457 117.591426"></polygon>
+        </g>
+        <text id="TSCL" fill="#FFFFFF" fill-rule="nonzero" font-family="HiraKakuStdN-W8, Hiragino Kaku Gothic StdN" font-size="80" font-weight="600" letter-spacing="12">
+            <tspan x="266" y="92">TSCL</tspan>
+        </text>
+    </g>
+</svg>

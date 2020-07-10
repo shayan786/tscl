@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: MyString
+  nu_match_result: MyString
+  nu_lbw: MyString
+  nu_caught: MyString
+  nu_run_out: MyString
+  nu_no_balls: MyString
+  nu_consistency: MyString
+  nu_laws: MyString
+  nu_signal: MyString
+  nu_pressure: MyString
+  nu_overall: MyString
+  nu_attire: MyString
+  nu_comm_partner: MyString
+  nu_comm_captain: MyString
+  lu_stump: MyString
+  lu_run_out: MyString
+  lu_no_balls: MyString
+  lu_consistency: MyString
+  lu_laws: MyString
+  lu_signal: MyString
+  lu_overall: MyString
+  lu_comm_nu: MyString
+  lu_fair: MyString
+  comments: MyString
+
+two:
+  start_time: MyString
+  nu_match_result: MyString
+  nu_lbw: MyString
+  nu_caught: MyString
+  nu_run_out: MyString
+  nu_no_balls: MyString
+  nu_consistency: MyString
+  nu_laws: MyString
+  nu_signal: MyString
+  nu_pressure: MyString
+  nu_overall: MyString
+  nu_attire: MyString
+  nu_comm_partner: MyString
+  nu_comm_captain: MyString
+  lu_stump: MyString
+  lu_run_out: MyString
+  lu_no_balls: MyString
+  lu_consistency: MyString
+  lu_laws: MyString
+  lu_signal: MyString
+  lu_overall: MyString
+  lu_comm_nu: MyString
+  lu_fair: MyString
+  comments: MyString

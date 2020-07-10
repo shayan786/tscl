@@ -1,0 +1,39 @@
+.match-report-form {
+	min-height: 600px;
+  max-height: 1200px;
+  overflow-y: auto;
+  
+  .card-body {
+  	.item {
+      margin-bottom: 1.3rem;
+
+      &__label {
+        font-size: 0.8rem;
+        opacity: 0.8;
+      }
+    }
+
+    table {
+      margin-top: 1rem;
+    }
+
+    input[type=radio] {
+      cursor: pointer;
+    }
+  }
+
+  .divider {
+    margin: 1.2rem 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255,255,255, 0.5);
+  }
+
+  .actions {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    a {
+      margin-left: 1rem;
+    }
+  }
+}

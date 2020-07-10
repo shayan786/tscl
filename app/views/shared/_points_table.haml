@@ -1,0 +1,19 @@
+.card.points-table
+	.card-header Points Table
+	.card-body
+		%table.table.table-dark
+			%thead
+				%tr
+					%th.text-right Rank
+					%th Team
+					%th.text-right W
+					%th.text-right L
+					%th.text-right Points
+			%tbody
+				- $points.each_with_index do |p, index|
+					%tr
+						%td.text-right= index+1
+						%td= p.club.acronym
+						%td.text-right= p.wins || 0
+						%td.text-right= p.loses || 0
+						%td.text-right= p.total_points || 0

@@ -1,0 +1,70 @@
+.row
+	.col-md-8
+		.card.fixtures
+			.card-header Fixtures
+			.card-body
+				.row.options
+					.form-group.col-md-3
+						%label{:for => "year"} Year
+						%select#year.form-control
+							%option{:selected => "selected", value: '2020'} 2020
+					.form-group.col-md-3
+						%label{:for => "overFormat"} Over Format
+						%select#overFormat.form-control
+							%option{:selected => "selected", value: '35'} 35
+							%option{value: '20'} 20
+				- if @fixtures
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Date
+								%th Home
+								%th Away
+								%th Ground
+								%th Umpire
+								%th HC
+								%th AC
+								%th UC
+								%th HE
+								%th AE
+								%th MR
+								%th.text-center Actions
+						%tbody
+							- @fixtures.each do |f|
+								%tr
+									%td= f.date.strftime("%b %e")
+									%td= Club.find_by(id: f.home_id).acronym
+									%td= Club.find_by(id: f.away_id).acronym
+									%td= Club.find_by(id: f.home_id).ground
+									%td= Club.find_by(id: f.umpire_id).acronym
+									%td.text-center
+										- if f.hc
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										- if f.ac
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										- if f.uc
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										- if f.he
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										- if f.ae
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										- if f.mr
+											%i{class: "fa fa-check-square"}
+									%td.text-center
+										%a{href: "/game/#{f.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
+											%i{class: "fa fa-info-circle"}
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'
+
+%script
+	handleFixtures()

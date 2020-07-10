@@ -1,0 +1,9 @@
+.row
+	.col-md-8
+		.card.document
+			.card-header By Laws
+			.card-body
+				%object{type: 'application/pdf', data: "#{url_for(@doc.pdf)}", width: "100%", height: "100%"}
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

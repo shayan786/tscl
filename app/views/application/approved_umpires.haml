@@ -1,0 +1,22 @@
+.row
+	.col-md-8
+		.card.clubs-and-grounds
+			.card-header Approved Umpires
+			.card-body
+				%table.table.table-dark
+					%thead
+						%tr
+							%th Last Name
+							%th First Name
+							%th Club
+							%th Umpire Level
+					%tbody
+						- @umpires.each do |u|
+							%tr
+								%td= u.last_name
+								%td= u.first_name
+								%td
+								%td= u.umpire_level
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

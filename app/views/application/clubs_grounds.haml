@@ -1,0 +1,22 @@
+.row
+	.col-md-8
+		.card.clubs-and-grounds
+			.card-header Clubs and Grounds
+			.card-body
+				%table.table.table-dark
+					%thead
+						%tr
+							%th Name
+							%th Ground
+							%th Captain (s)
+							%th Map
+					%tbody
+						- $clubs.each do |c|
+							%tr
+								%td= c.name
+								%td= c.ground
+								%td= c.get_captains
+								%td
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

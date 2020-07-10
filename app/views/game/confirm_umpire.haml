@@ -1,0 +1,22 @@
+.row
+	.col-md-8
+		.card.confirm-umpire
+			.card-header= "Confirm Umpire - #{@game.get_home_acronym} vs #{@game.get_away_acronym} on #{@game.date.strftime("%b %e")}"
+			.card-body
+				= form_with(url: '/game/confirm/umpire/new', method: 'post', local: true) do
+					%input{type: 'hidden', name: 'comment[game_id]', value: "#{@game.id}"}
+					.row
+						.form-group.col-md-5
+							%label Umpire
+							%select.form-control{name: 'game[umpire_user_id]'}
+								- @umpires.each do |u|
+									%option{value: "#{u.id}"}= "#{u.last_name}, #{u.first_name}"
+					.form-group
+						%label Comments
+						%textarea.form-control{rows: 6, name: 'comment[content]', placeholder: 'Phone #, etc...'}
+					.actions
+						%input.btn.btn-primary{type: 'submit', value: 'Confirm Umpire'}
+						%a{href: '/game/confirm/umpire'} Cancel
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

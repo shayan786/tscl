@@ -1,9 +1,9 @@
 nav {
-  width: 225px;
+  width: 245px;
   height: 100vh;
-  border-right: 1px solid $secondary;
   padding: 1rem 0;
   position: relative;
+  background: $nav-background;
 
   .divider {
     margin: 1rem 0 1rem 0.8rem;
@@ -17,7 +17,7 @@ nav {
     flex-flow: column nowrap;
 
     a {
-      padding: 0.4rem 0.7rem;
+      padding: 0.5rem 1.2rem;
       font-size: 0.9rem;
       text-decoration: none;
       color: $font-color-default;
@@ -38,6 +38,15 @@ nav {
 
       }
     }
+
+    .children {
+      display: flex;
+      flex-flow: column nowrap;
+
+      a {
+        padding: 0.5rem 1.2rem 0.5rem 3rem;
+      }
+    }
   }
 
   .actions {
@@ -49,7 +58,7 @@ nav {
     flex-flow: column nowrap;
 
     a {
-      padding: 0.4rem 0.7rem;
+      padding: 0.5rem 1.2rem;
       font-size: 0.9rem;
       text-decoration: none;
       color: $font-color-default;
@@ -81,6 +90,6 @@ nav {
 }
 
 .logo {
-  width: 140px;
+  width: 170px;
   margin-left: 25px;
 }

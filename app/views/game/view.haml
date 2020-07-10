@@ -1,0 +1,44 @@
+.row
+	.col-md-8
+		.card.game
+			.card-header= "Game - #{@game.get_home_acronym} vs #{@game.get_away_acronym} on #{@game.date.strftime("%b %e")}"
+			.card-body
+				.h5= "Home Team - #{@game.get_home_acronym}"
+				- if @game.hc
+					.confirm__time
+						.confirm__label Confirmed at
+						= @game.get_home_comment.updated_at.strftime("%b - %e at %l:%M %p")
+					.confirm__comments
+						.confirm__label Comments
+						= @game.get_home_comment.content
+				- else
+					.confirm__nope Not yet confirmed.
+				.divider
+				.h5= "Away Team - #{@game.get_away_acronym}"
+				- if @game.ac
+					.confirm__time
+						.confirm__label Confirmed at
+						= @game.get_away_comment.updated_at.strftime("%b - %e at %l:%M %p")
+					.confirm__comments
+						.confirm__label Comments
+						= @game.get_away_comment.content
+				- else
+					.confirm__nope Not yet confirmed.
+				.divider
+				.h5= "Umpire - #{@game.get_umpire_acronym}"
+				- if @game.ac
+					.confirm__time
+						.confirm__label Confirmed at
+						= @game.get_umpire_comment.updated_at.strftime("%b - %e at %l:%M %p")
+					.confirm__umpire
+						.confirm__label Umpire
+						= @game.get_umpire_name
+					.confirm__comments
+						.confirm__label Comments
+						= @game.get_umpire_comment.content
+				- else
+					.confirm__nope Not yet confirmed.
+
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

@@ -1,0 +1,17 @@
+.card.upcoming-matches
+	.card-header Upcoming Matches
+	.card-body
+		%table.table.table-dark
+			%thead
+				%tr
+					%th Date
+					%th Home
+					%th Away
+					%th Umpire
+			%tbody
+				- $upcoming_games.each do |g|
+					%tr
+						%td= g.date.strftime("%b %e")
+						%td= Club.find_by(id: g.home_id).acronym
+						%td= Club.find_by(id: g.away_id).acronym
+						%td= Club.find_by(id: g.umpire_id).acronym

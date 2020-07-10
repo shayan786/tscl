@@ -82,4 +82,4 @@ production:
   <<: *default
   database: tscl_production
   username: tscl
-  password: <%= ENV['ALKI_DATABASE_PASSWORD'] %>
+  password: <%= ENV['TSCL_DATABASE_PASSWORD'] %>

@@ -1,41 +1,58 @@
 class ApplicationController < ActionController::Base
   before_action :set_navigation
+  $news = News.last(3).reverse
+  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
+  $clubs = Club.all
+  $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
 
   def set_navigation
-    @navigation = [
-      { title: 'Home', url: '/', icon: 'home' },
-      { title: 'Game Zone', url: '/game-zone', icon: 'gamepad' },
-      { title: 'Operations', url: '/operations', icon: 'folder-open' },
-      { title: 'Clubs & Grounds', url: '/clubs-and-grounds', icon: 'building' }
-    ]
-
-    if current_user
-      @actions = [
-        { title: "Edit News", url: '/'},
-        { title: "Edit Schedule", url: '/'},
-        { title: "Edit Points Table", url: '/'},
-        { title: "View Umpire Evaluations", url: '/'},
-        { title: "View Match Reports", url: '/'},
-        { title: "divider" },
-        { title: "Confirm Game", url: '/'},
-        { title: "Confirm Umpiring", url: '/'},
-        { title: "Complete Match Report", url: '/'},
-        { title: "Complete Umpire Evaluation", url: '/'},
-        { title: "divider" },
-        { title: "Logout", url: '/users/sign_out', icon: 'sign-out'}
-      ]
-    else
-      @actions = [
-        { title: 'Login', url: '/users/sign_in', icon: 'user'},
-      ]
-    end
+    @navigation = Navigation.items
+    @actions = Navigation.actions(current_user)
   end
 
   def index
-    @news = News.all
   end
 
   def clubs_grounds
   end
 
+  def constitution
+    @doc = Document.find_by(title: 'Constitution')
+  end
+
+  def by_laws
+    @doc = Document.find_by(title: 'By Laws')
+  end
+
+  def playing_conditions
+    @doc = Document.find_by(title: 'Playig Conditions')
+  end
+
+  def laws_of_cricket
+    @doc = Document.find_by(title: 'Laws of Cricket')
+  end
+
+  def fixtures
+    if (params[:year] && params[:over_format])
+      season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
+
+      @fixtures = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).games.order('date ASC') : nil;
+    else
+      @fixtures = Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC') || nil
+    end
+  end
+
+  def points_table
+    if (params[:year] && params[:over_format])
+      season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
+
+      @points = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).points.order('Team ASC') : nil;
+    else
+      @points = Season.find_by(year: Time.now.year, over_format: '35').points.order('points ASC') || nil
+    end
+  end
+
+  def approved_umpires
+    @umpires = User.where(umpire_level: '0+').or(User.where(umpire_level: '1')).or(User.where(umpire_level: '2')).order('umpire_level DESC')
+  end
 end

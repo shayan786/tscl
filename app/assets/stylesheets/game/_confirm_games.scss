@@ -1,0 +1,18 @@
+.confirm-games {
+	min-height: 600px;
+  
+  .card-body {
+  	padding: 0;
+
+    .alert {
+      margin: 1rem;
+    }
+
+    .actions {
+      a {
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

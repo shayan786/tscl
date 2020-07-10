@@ -1,0 +1,59 @@
+.row
+	.col-md-8
+		.card.points
+			.card-header Points Table
+			.card-body
+				.row.options
+					.form-group.col-md-3
+						%label{:for => "year"} Year
+						%select#year.form-control
+							%option{:selected => "selected", value: '2020'} 2020
+					.form-group.col-md-3
+						%label{:for => "overFormat"} Over Format
+						%select#overFormat.form-control
+							%option{:selected => "selected", value: '35'} 35
+							%option{value: '20'} 20
+				- if @points
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Team
+								%th.text-right W
+								%th.text-right L
+								%th.text-right FF
+								%th.text-right Tied
+								%th.text-right BBowl
+								%th.text-right BBat
+								%th.text-right UE
+								%th.text-right NUR
+								%th.text-right SS
+								%th.text-right L0
+								%th.text-right JC
+								%th.text-right NU
+								%th.text-right GC
+								%th.text-right Palm
+						%tbody
+							- @points.each do |p|
+								%tr
+									%td= p.club.acronym
+									%td.text-right= p.wins || '-'
+									%td.text-right= p.loses || '-'
+									%td.text-right= p.ff || '-'
+									%td.text-right= p.tied || '-'
+									%td.text-right= p.bbowl || '-'
+									%td.text-right= p.bbat || '-'
+									%td.text-right= p.ue || '-'
+									%td.text-right= p.nur || '-'
+									%td.text-right= p.ss || '-'
+									%td.text-right= p.lzero || '-'
+									%td.text-right= p.jc || '-'
+									%td.text-right= p.nu || '-'
+									%td.text-right= p.gc || '-'
+									%td.text-right= p.palm || '-'
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

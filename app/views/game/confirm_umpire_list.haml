@@ -1,0 +1,37 @@
+.row
+	.col-md-8
+		.card.confirm-umpires
+			.card-header Confirm Umpiring
+			.card-body
+				- if flash[:notice]
+					.alert.alert-success{:role => "alert"}
+						= flash[:notice]
+				- if flash[:error]
+					.alert.alert-danger{:role => "alert"}
+						= flash[:error]
+				%table.table.table-dark
+					%thead
+						%tr
+							%th Date
+							%th Home
+							%th Away
+							%th Ground
+							%th.text-center Actions
+					%tbody
+						- @games.each do |g|
+							%tr
+								%td= g.date.strftime("%b %e")
+								%td= g.get_home_acronym
+								%td= g.get_away_acronym
+								%td= g.get_ground
+								%td.actions.text-center
+									%a{href: "/game/confirm/umpire/#{g.id}", "data-toggle" => "tooltip", title: "Confirm Umpiring", "data-placement" => "bottom"}
+										%i{class: "fa fa-check-square"}
+									%a{href: "#", "data-toggle" => "tooltip", title: "Edit Confirmation", "data-placement" => "bottom"}
+										%i{class: "fa fa-pencil-square"}
+									%a{href: "/game/#{g.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
+										%i{class: "fa fa-info-circle"}
+
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

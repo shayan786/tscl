@@ -1,12 +1,22 @@
 %nav
   %a{href: '/'}
-    = image_tag 'tscl_logo.svg', class: 'logo', title: 'TSCL'
+    = image_tag 'tscl_logo_2.svg', class: 'logo', title: 'TSCL'
   .divider
   .items
     - @navigation.each do |nav|
-      %a{href: "#{nav[:url]}", :class => ("selected" if nav[:url] == request.path)}
-        %i{class: "fa fa-#{nav[:icon]}"}
-        = nav[:title]
+      - if nav[:children]
+        %a{href: "#" + "#{nav[:title].gsub(/\s+/, "")}", "data-toggle" => "collapse"}
+          %i{class: "fa fa-#{nav[:icon]}"}
+          = nav[:title]
+        .collapse{id: nav[:title].gsub(/\s+/, "")}
+          .children
+            - nav[:children].each do |child|
+              %a{href: "#{child[:url]}"}
+                = child[:title]
+      - else
+        %a{href: "#{nav[:url]}", :class => ("selected" if nav[:url] == request.path)}
+          %i{class: "fa fa-#{nav[:icon]}"}
+          = nav[:title]
   .actions
     - @actions.each do |action|
       - if action[:title] == 'divider'

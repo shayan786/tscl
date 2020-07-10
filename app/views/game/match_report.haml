@@ -1,0 +1,135 @@
+.row
+	.col-md-8
+		.card.match-report-view
+			.card-header Match Report
+			.card-body
+				.item
+					.item__label Completed by
+					.item__value= @mr.get_current_user_club_acronym
+				.item
+					.item__label Completed on
+					.item__value= @mr.updated_at
+				.item
+					.item__label Ground
+					.item__value= @game.get_ground
+				.item
+					.item__label Neutral Umpire
+					.item__value= @game.get_umpire_name
+				.item
+					.item__label Neutral Umpire Level
+					.item__value= @game.get_umpire_level
+				- if @mr.comments
+					.item
+						.item__label Comments
+						.item__value= @mr.comments
+				.divider
+				%table.table.table-dark
+					%thead
+						%tr
+							%th
+							%th.text-center Yes
+							%th.text-center No
+							%th.text-center See Comments
+					%tbody
+						%tr
+							%td Payment Before Leaving
+							%td.text-center
+								- if @mr.payment === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.payment === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.payment === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td 30-Yard Circle Marking
+							%td.text-center
+								- if @mr.thirty_circle === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.thirty_circle === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.thirty_circle === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Boundary Markings
+							%td.text-center
+								- if @mr.boundary === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.boundary === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.boundary === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Scorecard Usage
+							%td.text-center
+								- if @mr.scorecard === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.scorecard === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.scorecard === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Adequate ice cold portable water/drinks
+							%td.text-center
+								- if @mr.water === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.water === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.water === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Condition of pitch (carpet, edges, ends)
+							%td.text-center
+								- if @mr.pitch === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.pitch === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.pitch === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Outfield/Infield Condition (grass height, litter)
+							%td.text-center
+								- if @mr.condition === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.condition === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.condition === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Wide Line Marking
+							%td.text-center
+								- if @mr.wide === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.wide === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.wide === 'see_comments'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Player Behavior
+							%td.text-center
+								- if @mr.behavior === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.behavior === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.behavior === 'see_comments'
+									%i{class: "fa fa-check-square"}
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

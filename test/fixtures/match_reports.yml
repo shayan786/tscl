@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: MyString
+  match_result: MyString
+  payment: MyString
+  thirty_circle: MyString
+  boundary: MyString
+  scorecard: MyString
+  water: MyString
+  pitch: MyString
+  condition: MyString
+  wide: MyString
+  behavior: MyString
+  comments: MyString
+
+two:
+  start_time: MyString
+  match_result: MyString
+  payment: MyString
+  thirty_circle: MyString
+  boundary: MyString
+  scorecard: MyString
+  water: MyString
+  pitch: MyString
+  condition: MyString
+  wide: MyString
+  behavior: MyString
+  comments: MyString

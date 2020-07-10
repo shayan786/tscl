@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_034238) do
+ActiveRecord::Schema.define(version: 2020_07_10_162408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,13 +45,23 @@ ActiveRecord::Schema.define(version: 2020_03_25_034238) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "news", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_comments_on_game_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "schedules", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.date "date"
     t.integer "home_id"
     t.integer "away_id"
@@ -59,6 +69,121 @@ ActiveRecord::Schema.define(version: 2020_03_25_034238) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "over_format"
+    t.boolean "hc"
+    t.boolean "ac"
+    t.boolean "uc"
+    t.boolean "he"
+    t.boolean "ae"
+    t.boolean "mr"
+    t.bigint "season_id"
+    t.integer "umpire_user_id"
+    t.index ["season_id"], name: "index_games_on_season_id"
+  end
+
+  create_table "match_reports", force: :cascade do |t|
+    t.string "start_time"
+    t.string "match_result"
+    t.string "payment"
+    t.string "thirty_circle"
+    t.string "boundary"
+    t.string "scorecard"
+    t.string "water"
+    t.string "pitch"
+    t.string "condition"
+    t.string "wide"
+    t.string "behavior"
+    t.string "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.index ["game_id"], name: "index_match_reports_on_game_id"
+    t.index ["user_id"], name: "index_match_reports_on_user_id"
+  end
+
+  create_table "navigations", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "news", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "points", force: :cascade do |t|
+    t.integer "wins"
+    t.integer "loses"
+    t.integer "tied"
+    t.integer "bbowl"
+    t.integer "bbat"
+    t.integer "ue"
+    t.integer "nur"
+    t.integer "ss"
+    t.integer "lzero"
+    t.integer "jc"
+    t.integer "nu"
+    t.integer "gc"
+    t.integer "palm"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "season_id"
+    t.bigint "club_id"
+    t.float "total_points"
+    t.integer "ff"
+    t.index ["club_id"], name: "index_points_on_club_id"
+    t.index ["season_id"], name: "index_points_on_season_id"
+  end
+
+  create_table "seasons", force: :cascade do |t|
+    t.integer "year"
+    t.string "over_format"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "umpire_evaluations", force: :cascade do |t|
+    t.string "start_time"
+    t.string "nu_match_result"
+    t.string "nu_lbw"
+    t.string "nu_caught"
+    t.string "nu_run_out"
+    t.string "nu_no_balls"
+    t.string "nu_consistency"
+    t.string "nu_laws"
+    t.string "nu_signal"
+    t.string "nu_pressure"
+    t.string "nu_overall"
+    t.string "nu_attire"
+    t.string "nu_comm_partner"
+    t.string "nu_comm_captain"
+    t.string "lu_stump"
+    t.string "lu_run_out"
+    t.string "lu_no_balls"
+    t.string "lu_consistency"
+    t.string "lu_laws"
+    t.string "lu_signal"
+    t.string "lu_overall"
+    t.string "lu_comm_nu"
+    t.string "lu_fair"
+    t.string "comments"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.index ["game_id"], name: "index_umpire_evaluations_on_game_id"
+    t.index ["user_id"], name: "index_umpire_evaluations_on_user_id"
+  end
+
+  create_table "user_club_associations", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "club_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "position"
+    t.index ["club_id"], name: "index_user_club_associations_on_club_id"
+    t.index ["user_id"], name: "index_user_club_associations_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,6 +198,9 @@ ActiveRecord::Schema.define(version: 2020_03_25_034238) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_active"
+    t.string "umpire_level"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

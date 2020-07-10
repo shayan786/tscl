@@ -1,0 +1,36 @@
+.row
+	.col-md-8
+		.card.confirm-umpires
+			.card-header Completed Umpire Evaluations
+			.card-body
+				- if flash[:notice]
+					.alert.alert-success{:role => "alert"}
+						= flash[:notice]
+				- if flash[:error]
+					.alert.alert-danger{:role => "alert"}
+						= flash[:error]
+				- if @evals
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Date
+								%th Home
+								%th Away
+								%th.text-center Actions
+						%tbody
+							- @evals.each do |e|
+								%tr
+									%td= e.get_game.date.strftime("%b %e")
+									%td= e.get_game.get_home_acronym
+									%td= e.get_game.get_away_acronym
+									%td.text-center
+										%a{href: "/game/umpire-evaluations/#{e.id}", "data-toggle" => "tooltip", title: "View Evaluation", "data-placement" => "bottom"}
+											%i{class: "fa fa-info-circle"}
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

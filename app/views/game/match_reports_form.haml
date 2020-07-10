@@ -1,0 +1,57 @@
+.row
+	.col-md-8
+		.card.match-report-form
+			.card-header Match Report
+			.card-body
+				.item
+					.item__label Date
+					.item__value= @game.date.strftime("%b %e")
+				.item
+					.item__label Ground
+					.item__value= @game.get_ground
+				.item
+					.item__label Neutral Umpire
+					.item__value= @game.get_umpire_name
+				.item
+					.item__label Neutral Umpire Level
+					.item__value= @game.get_umpire_level
+				.divider
+				= form_with(url: '/game/match-reports/new', method: 'post', local: true) do
+					%input{type: 'hidden', name: 'match_report[game_id]', value: "#{@game.id}"}
+					.row
+						.form-group.col-md-5
+							%label Start of play
+							%input.form-control{name: 'match_report[start_time]', required: true}
+					.row
+						.form-group.col-md-5
+							%label Match result
+							%select.form-control{name: 'match_report[match_result]'}
+								%option{value: "home_win"} Home Win
+								%option{value: "away_win"} Away Win
+								%option{value: "tie"} Tie
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Neutral Umpire
+								%th.text-center Yes
+								%th.text-center No
+								%th.text-center See Comments
+						%tbody
+							- MatchReport.match_report_options.each do |o|
+								%tr
+									%td= o[:title]
+									%td.text-center
+										%input{type: "radio", name: "#{o[:name]}", value: 'yes', checked: 'true'}
+									%td.text-center
+										%input{type: "radio", name: "#{o[:name]}", value: 'no'}
+									%td.text-center
+										%input{type: "radio", name: "#{o[:name]}", value: 'see_comments'}
+					.form-group
+						%label Comments
+						%textarea.form-control{rows: 6, name: 'match_report[comments]', placeholder: 'Optional'}
+					.actions
+						%input.btn.btn-primary{type: 'submit', value: 'Submit'}
+						%a{href: '/game/match-reports/captain'} Cancel
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

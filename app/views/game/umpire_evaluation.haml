@@ -1,0 +1,339 @@
+.row
+	.col-md-8
+		.card.umpire-evaluation-view
+			.card-header Umpire Evaluation
+			.card-body
+				.item
+					.item__label Completed by
+					.item__value= @ue.get_current_user_club_acronym
+				.item
+					.item__label Completed on
+					.item__value= @ue.updated_at
+				.item
+					.item__label Ground
+					.item__value= @game.get_ground
+				.item
+					.item__label Neutral Umpire
+					.item__value= @game.get_umpire_name
+				.item
+					.item__label Neutral Umpire Level
+					.item__value= @game.get_umpire_level
+				.item
+					.item__label Comments
+					.item__value= @ue.comments
+				.divider
+				%table.table.table-dark
+					%thead
+						%tr
+							%th Neutral Umpire
+							%th.text-center Excellent
+							%th.text-center Fair
+							%th.text-center Poor
+							%th.text-center N/A
+					%tbody
+						%tr
+							%td LBW Decisions
+							%td.text-center
+								- if @ue.nu_lbw === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_lbw === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_lbw === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_lbw === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Caught Behind
+							%td.text-center
+								- if @ue.nu_caught === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_caught === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_caught === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_caught === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Run-out Decisions
+							%td.text-center
+								- if @ue.nu_run_out === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_run_out === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_run_out === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_run_out === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td No-Balls & Wides
+							%td.text-center
+								- if @ue.nu_no_balls === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_no_balls === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_no_balls === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_no_balls === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Consistency in Decisions
+							%td.text-center
+								- if @ue.nu_consistency === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_consistency === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_consistency === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_consistency === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Application of Laws
+							%td.text-center
+								- if @ue.nu_laws === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_laws === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_laws === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_laws === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Proper Signaling
+							%td.text-center
+								- if @ue.nu_signal === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_signal === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_signal === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_signal === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Withstanding Pressure
+							%td.text-center
+								- if @ue.nu_pressure === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_pressure === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_pressure === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_pressure === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Overall Concentration
+							%td.text-center
+								- if @ue.nu_overall === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_overall === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_overall === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_overall === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Attire
+							%td.text-center
+								- if @ue.nu_attire === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_attire === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_attire === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_attire === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Communication with Partner
+							%td.text-center
+								- if @ue.nu_comm_partner === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_partner === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_partner === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_partner === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Communication with Captains
+							%td.text-center
+								- if @ue.nu_comm_captain === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_captain === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_captain === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.nu_comm_captain === 'N/A'
+									%i{class: "fa fa-check-square"}
+				%table.table.table-dark
+					%thead
+						%tr
+							%th Batting Team's Leg Umpire
+							%th.text-center Excellent
+							%th.text-center Fair
+							%th.text-center Poor
+							%th.text-center N/A
+					%tbody
+						%tr
+							%td Stumped-out Decisions
+							%td.text-center
+								- if @ue.lu_stump === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_stump === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_stump === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_stump === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Run-out Decisions
+							%td.text-center
+								- if @ue.lu_run_out === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_run_out === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_run_out === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_run_out === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td No-Balls
+							%td.text-center
+								- if @ue.lu_no_balls === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_no_balls === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_no_balls === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_no_balls === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Consistency in Decisions
+							%td.text-center
+								- if @ue.lu_consistency === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_consistency === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_consistency === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_consistency === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Application of Laws
+							%td.text-center
+								- if @ue.lu_laws === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_laws === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_laws === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_laws === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Proper Signaling
+							%td.text-center
+								- if @ue.lu_signal === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_signal === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_signal === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_signal === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Overall Concentration
+							%td.text-center
+								- if @ue.lu_overall === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_overall === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_overall === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_overall === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Communication with NU
+							%td.text-center
+								- if @ue.lu_comm_nu === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_comm_nu === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_comm_nu === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_comm_nu === 'N/A'
+									%i{class: "fa fa-check-square"}
+						%tr
+							%td Fair Play
+							%td.text-center
+								- if @ue.lu_fair === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_fair === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_fair === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.lu_fair === 'N/A'
+									%i{class: "fa fa-check-square"}
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

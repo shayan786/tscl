@@ -16,3 +16,17 @@ body {
   color: $font-color-default;
   border-color: rgba(255,255,255,0.12);
 }
+
+table {
+  font-size: 0.8rem;
+}
+
+.empty {
+  margin-top: 2rem;
+  text-align: center;
+
+  .fa {
+    margin-bottom: 1rem;
+    font-size: 48px;
+  }
+}

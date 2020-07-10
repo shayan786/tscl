@@ -1,0 +1,43 @@
+.row
+	.col-md-8
+		.card.match-reports-list
+			.card-header Match Reports
+			.card-body
+				- if flash[:notice]
+					.alert.alert-success{:role => "alert"}
+						= flash[:notice]
+				- if flash[:error]
+					.alert.alert-danger{:role => "alert"}
+						= flash[:error]
+				- if @fixtures.count > 0
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Date
+								%th Home
+								%th Away
+								%th Umpire
+								%th.text-center Actions
+						%tbody
+							- @fixtures.each do |f|
+								%tr
+									%td= f.date.strftime("%b %e")
+									%td= f.get_home_acronym
+									%td= f.get_away_acronym
+									%td= f.get_umpire_acronym
+									%td.text-center.actions
+										- if !MatchReport.find_by(game_id: f.id)
+											%a{href: "/game/match-reports/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Report", "data-placement" => "bottom"}
+												%i{class: "fa fa-check-square"}
+										%a{href: "#", "data-toggle" => "tooltip", title: "Edit Report", "data-placement" => "bottom"}
+											%i{class: "fa fa-pencil-square"}
+										%a{href: "/game/#{f.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
+											%i{class: "fa fa-info-circle"}
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'
