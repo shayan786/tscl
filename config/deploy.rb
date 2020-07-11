@@ -1,5 +1,5 @@
 # Change these
-server '198.199.107.13', port: 3000, roles: [:web, :app, :db], primary: true
+server '198.199.107.13', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:shayan786/tscl.git'
 set :application,     'tscl'
@@ -22,6 +22,8 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+
+set :linked_files, %w{config/master.key}
 
 ## Defaults:
 # set :scm,           :git
