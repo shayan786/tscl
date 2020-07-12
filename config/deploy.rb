@@ -23,6 +23,11 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
+set :pg_without_sudo, false
+set :pg_host, 'localhost'
+set :pg_database, 'tscl_production'
+set :pg_username, 'tscl'
+set :pg_ask_for_password, true
 set :linked_files, %w{config/master.key}
 
 ## Defaults:
