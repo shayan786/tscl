@@ -39,13 +39,13 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.authorize_with do |controller|
-    if current_user.nil?
-      redirect_to '/users/sign_in'
-    elsif !current_user.admin?
-      redirect_to '/'
-    end
-  end
+  # config.authorize_with do |controller|
+  #   if current_user.nil?
+  #     redirect_to '/users/sign_in'
+  #   elsif !current_user.admin?
+  #     redirect_to '/'
+  #   end
+  # end
 
   config.excluded_models = ["Navigation", "UserClubAssociation", "Attachment", "Blob"]
 end
