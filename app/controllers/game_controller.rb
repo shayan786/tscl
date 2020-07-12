@@ -1,9 +1,12 @@
 class GameController < ActionController::Base
 	before_action :authenticate, :set_navigation
-  $news = News.all
-  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
+  $news = []
+  # News.last(3).reverse
+  $upcoming_games = []
+  # Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
   $clubs = Club.all
-  $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
+  $points = []
+  #Season.find_by(year: Time.now.year).points.order('wins DESC')
 
   def set_navigation
     @navigation = Navigation.items
