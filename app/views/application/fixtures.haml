@@ -68,3 +68,5 @@
 
 %script
 	handleFixtures()
+	- if (params[:year] && params[:over_format])
+		setYearAndOverFormat("#{params[:year]}", "#{params[:over_format]}")

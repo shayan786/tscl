@@ -96,9 +96,13 @@ class Game < ApplicationRecord
   		field :home_id
   		field :away_id
   		field :umpire_id
-  		field :hc
-  		field :ac
-  		field :uc
+  	end
+
+  	create do
+  		field :date
+  		field :home_id
+  		field :away_id
+  		field :umpire_id
   	end
   end
 end

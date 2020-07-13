@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_navigation
   $news = News.last(3).reverse
   $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
-  $clubs = Club.all
+  $clubs = Club.all.order('name ASC')
   $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
 
   def set_navigation

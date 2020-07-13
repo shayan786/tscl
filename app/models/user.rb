@@ -28,6 +28,7 @@ class User < ApplicationRecord
   	create do
   		field :last_name
   		field :first_name
+      field :password
   		field :email
   		field :umpire_level
   		field :is_active
@@ -59,6 +60,19 @@ class User < ApplicationRecord
   		field :is_captain
       field :clubs
   	end
+
+    import do
+      field :last_name
+      field :first_name
+      field :password
+      field :email
+      field :umpire_level
+      field :is_active
+      field :is_ec
+      field :is_captain
+      field :admin
+      field :clubs
+    end
 
     configure :user_club_associations do
       visible(false)
