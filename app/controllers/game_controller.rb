@@ -1,7 +1,7 @@
 class GameController < ActionController::Base
 	before_action :authenticate, :set_navigation
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
+  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $clubs = Club.all
   $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
 

@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable,
+         :recoverable, :rememberable
 
   has_many :user_club_associations
   has_many :clubs, :through => :user_club_associations
@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :umpire_evaluations
   has_many :match_reports
 
-  # attr_accessible :club_ids
+  attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
+
   def club_ids=(ids)
     unless (ids = ids.map(&:to_i).select { |i| i>0 }) == (current_ids = user_club_associations.map(&:club_id))
       (current_ids - ids).each { |id| user_club_associations.select{|b|b.club_id == id}.first.mark_for_destruction }
@@ -73,10 +74,6 @@ class User < ApplicationRecord
       field :admin
       field :clubs
     end
-
-    configure :user_club_associations do
-      visible(false)
-    end
   end
 
   def umpire_level_enum
@@ -91,5 +88,22 @@ class User < ApplicationRecord
 
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def password_required?
+    return false if skip_password_validation
+    super
+  end
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
   end
 end

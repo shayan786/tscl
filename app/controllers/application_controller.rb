@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_navigation
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC')
+  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $clubs = Club.all.order('name ASC')
   $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
 
@@ -17,19 +17,43 @@ class ApplicationController < ActionController::Base
   end
 
   def constitution
-    @doc = Document.find_by(title: 'Constitution')
+    @doc = Document.find_by(doc_type: 'constitution')
   end
 
   def by_laws
-    @doc = Document.find_by(title: 'By Laws')
+    @doc = Document.find_by(doc_type: 'by_laws')
   end
 
   def playing_conditions
-    @doc = Document.find_by(title: 'Playing Conditions')
+    @doc = Document.find_by(doc_type: '35_playing_conditions')
   end
 
   def laws_of_cricket
-    @doc = Document.find_by(title: 'Laws of Cricket')
+    @doc = Document.find_by(doc_type: 'laws_of_cricket')
+  end
+
+  def meeting_minutes
+    @mms = Document.where(doc_type: 'meeting_minute').order('updated_at DESC')
+  end
+
+  def meeting_minutes_view
+    @mm = Document.find(params[:id])
+  end
+
+  def coc_violations
+    if !current_user
+      redirect_to root
+    end
+
+    @cocs = Document.where(doc_type: 'coc_violation').order('updated_at DESC')
+  end
+
+  def coc_violations_view
+    if !current_user
+      redirect_to root
+    end
+
+    @cc = Document.find(params[:id])
   end
 
   def fixtures

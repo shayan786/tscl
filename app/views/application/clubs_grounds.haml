@@ -15,7 +15,9 @@
 							%tr
 								%td= c.name
 								%td= c.ground
-								%td= c.get_captains
+								%td
+									- c.get_captains.each do |c|
+										%div= c
 								%td.text-center
 									%a{target: "_blank", href: "#{c.map}", "data-toggle" => "tooltip", title: "Google Map", "data-placement" => "bottom"}
 										%i{class: "fa fa-external-link-square"}

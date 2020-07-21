@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'application#index'
 
   get '/clubs-and-grounds'   											=>  'application#clubs_grounds'
+  get '/coc-violations'                           =>  'application#coc_violations'
+  get '/coc-violations/:id'                       =>  'application#coc_violations_view'
 
   get '/game-zone/fixtures'   										=>  'application#fixtures'
   get '/game-zone/fixtures/:year/:over_format'   	=>  'application#fixtures'
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   get '/operations/by-laws'                       =>  'application#by_laws'
   get '/operations/playing-conditions'            =>  'application#playing_conditions'
   get '/operations/laws-of-cricket'               =>  'application#laws_of_cricket'
+  get '/operations/meeting-minutes'               =>  'application#meeting_minutes'
+  get '/operations/meeting-minutes/:id'           =>  'application#meeting_minutes_view'
 
   get '/game/confirm/captain'											=> 	'game#confirm_game_list'
   get '/game/confirm/captain/:id'									=> 	'game#confirm_captain'
