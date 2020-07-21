@@ -10,4 +10,15 @@ class Club < ApplicationRecord
   		return '-'
   	end
   end
+
+  rails_admin do
+    list do
+      field :name
+      field :acronym
+      field :address
+      field :ground
+      field :map
+      field :users
+    end
+  end
 end

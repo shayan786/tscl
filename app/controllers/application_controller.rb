@@ -46,9 +46,9 @@ class ApplicationController < ActionController::Base
     if (params[:year] && params[:over_format])
       season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
 
-      @points = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).points.order('Team ASC') : nil;
+      @points = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).points.order('points DESC') : nil;
     else
-      @points = Season.find_by(year: Time.now.year, over_format: '35').points.order('points ASC') || nil
+      @points = Season.find_by(year: Time.now.year, over_format: '35').points.order('points DESC') || nil
     end
   end
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/game-zone/fixtures'   										=>  'application#fixtures'
   get '/game-zone/fixtures/:year/:over_format'   	=>  'application#fixtures'
   get '/game-zone/points-table'   								=>  'application#points_table'
+  get '/game-zone/points-table/:year/:over_format' =>  'application#points_table'
   get '/game-zone/approved-umpires'   						=>  'application#approved_umpires'
 
   get '/operations/constitution'                  =>  'application#constitution'

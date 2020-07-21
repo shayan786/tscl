@@ -24,6 +24,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 set :linked_files, %w{config/master.key}
+set :linked_files, %w{storage}
 
 ## Defaults:
 # set :scm,           :git

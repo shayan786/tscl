@@ -57,3 +57,8 @@
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'
+
+%script
+	handlePointsTable()
+	- if (params[:year] && params[:over_format])
+		setYearAndOverFormat("#{params[:year]}", "#{params[:over_format]}")

@@ -16,6 +16,9 @@
 								%td= u.last_name
 								%td= u.first_name
 								%td
+									- if u.clubs
+										- u.clubs.each do |c|
+											%div= c.acronym
 								%td= u.umpire_level
 	.col-md-4
 		= render 'shared/points_table'
