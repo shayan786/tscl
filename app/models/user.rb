@@ -52,6 +52,7 @@ class User < ApplicationRecord
   	end
 
   	list do
+      field :id
   		field :last_name
   		field :first_name
   		field :email
