@@ -6,7 +6,7 @@ class Navigation < ApplicationRecord
         { title: 'Fixtures', url: '/game-zone/fixtures' },
         { title: 'Points Table', url: '/game-zone/points-table' }, 
         { title: 'Approved Umpires', url: '/game-zone/approved-umpires' },
-        { title: 'Man of the Match', url: '#' }
+        { title: 'Man of the Match', url: '/game-zone/moms' }
         ] },
       { title: 'Operations', url: '#', icon: 'folder-open', children: [
         { title: 'Constitution', url: '/operations/constitution' },
@@ -27,6 +27,7 @@ class Navigation < ApplicationRecord
         { title: "Edit Points Table", url: '/admin/points'},
         { title: "View Umpire Evaluations", url: '/game/umpire-evaluations'},
         { title: "View Match Reports", url: '/game/match-reports'},
+        { title: "Select MOMs", url: '/admin/mom'},
         { title: "divider" },
         { title: "Confirm Game", url: '/game/confirm/captain'},
         { title: "Confirm Umpiring", url: '/game/confirm/umpire'},

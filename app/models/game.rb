@@ -3,6 +3,7 @@ class Game < ApplicationRecord
 	has_many :comments
 	has_many :umpire_evaluations
 	has_one :match_report
+	has_one :mom
 
 	def get_away_acronym
 		return Club.find_by(id: self.away_id).acronym
@@ -90,7 +91,13 @@ class Game < ApplicationRecord
 		[['35 Over', 35], ['T20', 20]]
 	end
 
+	def display_game
+		self.date.strftime("%-m/%-d/%y") + ' - ' + self.get_home_acronym + ' vs ' + self.get_away_acronym
+	end
+
 	rails_admin do
+		object_label_method :display_game
+
   	list do
   		field :date
   		field :home_id

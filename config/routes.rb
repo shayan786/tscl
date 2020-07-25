@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get '/game-zone/points-table/:year/:over_format' =>  'application#points_table'
   get '/game-zone/approved-umpires'   						=>  'application#approved_umpires'
 
+  get '/game-zone/moms'                           =>  'game#moms'
+  get '/game-zone/moms/:year/:over_format'        =>  'game#moms'
+
   get '/operations/constitution'                  =>  'application#constitution'
   get '/operations/by-laws'                       =>  'application#by_laws'
   get '/operations/playing-conditions'            =>  'application#playing_conditions'

@@ -7,7 +7,8 @@
 					.form-group.col-md-3
 						%label{:for => "year"} Year
 						%select#year.form-control
-							%option{:selected => "selected", value: '2020'} 2020
+							- Season.all.each do |s|
+								%option{value: "#{s.year}"}= s.year
 					.form-group.col-md-3
 						%label{:for => "overFormat"} Over Format
 						%select#overFormat.form-control

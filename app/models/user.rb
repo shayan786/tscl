@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :umpire_evaluations
   has_many :match_reports
+  has_many :moms
 
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
@@ -26,6 +27,8 @@ class User < ApplicationRecord
   end
 
   rails_admin do
+    object_label_method :get_full_name
+
   	create do
   		field :last_name
   		field :first_name

@@ -1,0 +1,32 @@
+.moms {
+	min-height: 600px;
+  
+  .card-body {
+  	padding: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    .alert {
+      margin: 1rem;
+    }
+
+    .row {
+      margin: 0;
+    }
+
+    .options {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+    }
+
+    .actions {
+      a {
+        font-size: 1rem;
+      }
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+}

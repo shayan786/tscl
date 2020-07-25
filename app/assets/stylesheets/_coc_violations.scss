@@ -1,0 +1,20 @@
+.coc-violations {
+	min-height: 600px;
+
+  .card-body {
+  	padding: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .options {
+  	padding: 1rem;
+  	font-size: 0.8rem;
+  }
+
+  .table {
+  	a {
+  		font-size: 1rem;
+  	}
+  }
+}

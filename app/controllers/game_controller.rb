@@ -240,6 +240,28 @@ class GameController < ActionController::Base
     @game = Game.find(@mr.game_id)
   end
 
+  def moms
+    @moms = []
+
+    if (params[:year] && params[:over_format])
+      season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
+
+      if season
+        season.games.each do |g|
+          if g.mom
+            @moms.push(g.mom)
+          end
+        end
+      end
+    else
+      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+        if g.mom
+          @moms.push(g.mom)
+        end
+      end
+    end
+  end
+
 	def authenticate
 		if !current_user
 			redirect_to new_user_session_path
