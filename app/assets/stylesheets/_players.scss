@@ -1,0 +1,9 @@
+.players {
+	min-height: 600px;
+
+  .card-body {
+  	padding: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}

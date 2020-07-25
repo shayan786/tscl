@@ -79,4 +79,8 @@ class ApplicationController < ActionController::Base
   def approved_umpires
     @umpires = User.where(umpire_level: '0+').or(User.where(umpire_level: '1')).or(User.where(umpire_level: '2')).order('umpire_level DESC')
   end
+
+  def players
+    @players = User.all.order('last_name ASC')
+  end
 end

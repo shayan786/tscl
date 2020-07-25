@@ -1,0 +1,33 @@
+.row
+	.col-md-8
+		.card.players
+			.card-header Players
+			.card-body
+				- if @players
+					%table.table.table-dark
+						%thead
+							%tr
+								%th ID
+								%th Last Name
+								%th First Name
+								%th Clubs (s)
+								%th.text-center Active
+						%tbody
+							- @players.each do |p|
+								%tr
+									%td= p.id
+									%td= p.last_name
+									%td= p.first_name
+									%td
+										- p.clubs.each do |c|
+											= c.acronym
+									%td.text-center
+										- if p.is_active
+											%i{class: "fa fa-check-square"}
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

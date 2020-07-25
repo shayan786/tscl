@@ -6,6 +6,7 @@ class Navigation < ApplicationRecord
         { title: 'Fixtures', url: '/game-zone/fixtures' },
         { title: 'Points Table', url: '/game-zone/points-table' }, 
         { title: 'Approved Umpires', url: '/game-zone/approved-umpires' },
+        { title: 'Players', url: '/game-zone/players' },
         { title: 'Man of the Match', url: '/game-zone/moms' }
         ] },
       { title: 'Operations', url: '#', icon: 'folder-open', children: [

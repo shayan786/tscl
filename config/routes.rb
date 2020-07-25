@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   get '/game-zone/points-table'   								=>  'application#points_table'
   get '/game-zone/points-table/:year/:over_format' =>  'application#points_table'
   get '/game-zone/approved-umpires'   						=>  'application#approved_umpires'
-
-  get '/game-zone/moms'                           =>  'game#moms'
-  get '/game-zone/moms/:year/:over_format'        =>  'game#moms'
+  get '/game-zone/players'                        =>  'application#players'
 
   get '/operations/constitution'                  =>  'application#constitution'
   get '/operations/by-laws'                       =>  'application#by_laws'
@@ -24,6 +22,9 @@ Rails.application.routes.draw do
   get '/operations/laws-of-cricket'               =>  'application#laws_of_cricket'
   get '/operations/meeting-minutes'               =>  'application#meeting_minutes'
   get '/operations/meeting-minutes/:id'           =>  'application#meeting_minutes_view'
+
+  get '/game-zone/moms'                           =>  'game#moms'
+  get '/game-zone/moms/:year/:over_format'        =>  'game#moms'
 
   get '/game/confirm/captain'											=> 	'game#confirm_game_list'
   get '/game/confirm/captain/:id'									=> 	'game#confirm_captain'
