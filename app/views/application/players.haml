@@ -20,7 +20,7 @@
 									%td= p.first_name
 									%td
 										- p.clubs.each do |c|
-											= c.acronym
+											.club= c.acronym
 									%td.text-center
 										- if p.is_active
 											%i{class: "fa fa-check-square"}
