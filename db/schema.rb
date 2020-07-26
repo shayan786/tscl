@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_22_211250) do
+ActiveRecord::Schema.define(version: 2020_07_26_002104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2020_07_22_211250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "doc_type"
+  end
+
+  create_table "executive_committees", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.string "role"
+    t.bigint "season_id"
+    t.index ["season_id"], name: "index_executive_committees_on_season_id"
   end
 
   create_table "games", force: :cascade do |t|

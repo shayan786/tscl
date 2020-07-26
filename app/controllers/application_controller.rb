@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :set_navigation
   $news = News.last(3).reverse
   $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-  $clubs = Club.all.order('name ASC')
   $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
 
   def set_navigation
@@ -14,6 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def clubs_grounds
+    @clubs = Club.all.order('name ASC')
   end
 
   def constitution
@@ -38,6 +38,16 @@ class ApplicationController < ActionController::Base
 
   def meeting_minutes_view
     @mm = Document.find(params[:id])
+  end
+
+  def ec
+    if (params[:year] && params[:over_format])
+      season = Season.where(year: params[:year]).first || nil
+
+      @ec = season ? season.executive_committees : nil;
+    else
+      @ec = Season.where(year: Time.now.year).first.executive_committees || nil
+    end
   end
 
   def coc_violations

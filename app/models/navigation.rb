@@ -14,6 +14,7 @@ class Navigation < ApplicationRecord
         { title: 'By Laws', url: '/operations/by-laws' },
         { title: 'Playing Conditions', url: '/operations/playing-conditions' },
         { title: 'Laws of Cricket', url: '/operations/laws-of-cricket' },
+        { title: 'Executive Committee', url: '/operations/ec' },
         { title: 'Meeting Minutes', url: '/operations/meeting-minutes' }
         ] },
       { title: 'Clubs & Grounds', url: '/clubs-and-grounds', icon: 'building' }

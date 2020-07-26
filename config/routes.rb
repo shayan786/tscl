@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/operations/laws-of-cricket'               =>  'application#laws_of_cricket'
   get '/operations/meeting-minutes'               =>  'application#meeting_minutes'
   get '/operations/meeting-minutes/:id'           =>  'application#meeting_minutes_view'
+  get '/operations/ec'                            =>  'application#ec'
 
   get '/game-zone/moms'                           =>  'game#moms'
   get '/game-zone/moms/:year/:over_format'        =>  'game#moms'
