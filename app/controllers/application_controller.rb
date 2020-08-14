@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   $news = News.last(3).reverse
   $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $points = Season.find_by(year: Time.now.year).points.order('wins DESC')
+  $moms = Mom.last(5)
 
   def set_navigation
     @navigation = Navigation.items
@@ -41,12 +42,18 @@ class ApplicationController < ActionController::Base
   end
 
   def ec
-    if (params[:year] && params[:over_format])
-      season = Season.where(year: params[:year]).first || nil
-
-      @ec = season ? season.executive_committees : nil;
+    if (params[:year])
+      @ec = ExecutiveCommittee.where(year: params[:year]) || nil
     else
-      @ec = Season.where(year: Time.now.year).first.executive_committees || nil
+      @ec = ExecutiveCommittee.where(year: Time.now.year) || nil
+    end
+  end
+
+  def jc
+    if (params[:year])
+      @jc = JudiciaryCommittee.where(year: params[:year]) || nil
+    else
+      @jc = JudiciaryCommittee.where(year: Time.now.year) || nil
     end
   end
 

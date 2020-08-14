@@ -1,13 +1,4 @@
-class ExecutiveCommittee < ApplicationRecord
-	def role_enum
-		[	['President', 'president'],
-			['Vice-President', 'vice_president'],
-			['Secretary', 'secretary'],
-			['Treasurer', 'treasurer'],
-			['Fifth Member', 'fifth_member']
-		]
-	end
-
+class JudiciaryCommittee < ApplicationRecord
 	def user_id_enum
 		User.all.order('last_name ASC').map{|u| ["#{u.last_name}, #{u.first_name}", u.id]}
 	end
@@ -19,19 +10,16 @@ class ExecutiveCommittee < ApplicationRecord
 	rails_admin do
   	create do
   		field :user_id
-  		field :role
       field :year
   	end
 
   	edit do
   		field :user_id
-  		field :role
       field :year
   	end
 
   	list do
       field :user_id
-  		field :role
       field :year
   	end
   end

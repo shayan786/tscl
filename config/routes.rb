@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/operations/meeting-minutes'               =>  'application#meeting_minutes'
   get '/operations/meeting-minutes/:id'           =>  'application#meeting_minutes_view'
   get '/operations/ec'                            =>  'application#ec'
+  get '/operations/jc'                            =>  'application#jc'
 
   get '/game-zone/moms'                           =>  'game#moms'
   get '/game-zone/moms/:year/:over_format'        =>  'game#moms'

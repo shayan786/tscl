@@ -1,0 +1,36 @@
+.row
+	.col-md-8
+		.card.ec
+			.card-header Judiciary Committee
+			.card-body
+				.row.options
+					.form-group.col-md-3
+						%label{:for => "year"} Year
+						%select#year.form-control
+							- Season.all.each do |s|
+								%option{value: "#{s.year}"}= s.year
+				- if @jc
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Name
+								%th Teams
+						%tbody
+							- @jc.each do |e|
+								%tr
+									%td= User.find(e.user_id).get_full_name
+									%td
+										- User.find(e.user_id).clubs.each do |c|
+											.club= c.acronym
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'
+
+%script
+	handleFixtures()
+	- if (params[:year] && params[:over_format])
+		setYearAndOverFormat("#{params[:year]}", "#{params[:over_format]}")

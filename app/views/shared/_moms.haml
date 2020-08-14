@@ -1,0 +1,20 @@
+.card.moms-carousel
+	.card-header Man of the Match
+	.card-body
+		#carouselMOM.carousel-mom.slide{"data-ride" => "carousel"}
+			.carousel-inner
+				- $moms.each_with_index do |n, index|
+					.carousel-item{:class => ("active" if index === 0)}
+						.image{:style => "background-image: url('#{url_for(n.image)}')"}
+						.carousel-caption.d-none.d-md-block
+							%h5= n.game.display_game
+							.name= n.user.get_full_name
+			%a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselMOM", :role => "button"}
+				%span.carousel-control-prev-icon{"aria-hidden" => "true"}
+				%span.sr-only Previous
+			%a.carousel-control-next{"data-slide" => "next", :href => "#carouselMOM", :role => "button"}
+				%span.carousel-control-next-icon{"aria-hidden" => "true"}
+				%span.sr-only Next
+
+%script
+	$('.carousel-mom').carousel()
