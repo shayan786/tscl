@@ -33,6 +33,7 @@
 								%th.text-right NU
 								%th.text-right GC
 								%th.text-right Palm
+								%th.text-right Total
 						%tbody
 							- @points.each do |p|
 								%tr
@@ -51,6 +52,7 @@
 									%td.text-right= p.nu || '-'
 									%td.text-right= p.gc || '-'
 									%td.text-right= p.palm || '-'
+									%td.text-right= p.total_points || '-'
 				- else
 					.div.empty
 						%i{class: "fa fa-frown-o"}
