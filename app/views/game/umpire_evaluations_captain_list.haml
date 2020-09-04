@@ -29,8 +29,6 @@
 										- if !UmpireEvaluation.find_by(game_id: f.id)
 											%a{href: "/game/umpire-evaluations/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Evaluation", "data-placement" => "bottom"}
 												%i{class: "fa fa-check-square"}
-										%a{href: "#", "data-toggle" => "tooltip", title: "Edit Evaluation", "data-placement" => "bottom"}
-											%i{class: "fa fa-pencil-square"}
 										%a{href: "/game/#{f.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}
 				- else
