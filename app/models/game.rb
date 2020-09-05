@@ -96,7 +96,7 @@ class Game < ApplicationRecord
 	end
 
 	rails_admin do
-		object_label_method :display_game
+		# object_label_method :display_game
 
   	list do
   		field :date
