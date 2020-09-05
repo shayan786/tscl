@@ -3,7 +3,7 @@ class Season < ApplicationRecord
 	has_many :points, class_name: 'Points'
 
 	def display_season
-		"#{self.year}" + ' - ' + self.over_format + ' Over'
+		# "#{self.year}" + ' - ' + self.over_format + ' Over'
 	end
 
 	rails_admin do
