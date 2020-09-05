@@ -100,6 +100,7 @@ class Game < ApplicationRecord
 
   	list do
   		field :date
+  		field :season
   		field :home_id
   		field :away_id
   		field :umpire_id
@@ -107,6 +108,7 @@ class Game < ApplicationRecord
 
   	create do
   		field :date
+  		field :season
   		field :home_id
   		field :away_id
   		field :umpire_id
