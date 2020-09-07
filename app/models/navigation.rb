@@ -23,7 +23,7 @@ class Navigation < ApplicationRecord
 	end
 
 	def self.actions(current_user)
-		if current_user && current_user.is_ec
+		if current_user && current_user.is_ec && current_user.is_captain
       [
         { title: "Edit News", url: '/admin/news'},
         { title: "Edit Schedule", url: '/admin/game'},
@@ -36,6 +36,19 @@ class Navigation < ApplicationRecord
         { title: "Confirm Umpiring", url: '/game/confirm/umpire'},
         { title: "Complete Match Report", url: '/game/match-reports/captain'},
         { title: "Complete Umpire Evaluation", url: '/game/umpire-evaluations/captain'},
+        { title: "divider" },
+        { title: "COC Violations", url: '/coc-violations'},
+        { title: "divider" },
+        { title: "Logout", url: '/users/sign_out', icon: 'sign-out'}
+      ]
+    elsif current_user && current_user.is_ec
+      [
+        { title: "Edit News", url: '/admin/news'},
+        { title: "Edit Schedule", url: '/admin/game'},
+        { title: "Edit Points Table", url: '/admin/points'},
+        { title: "View Umpire Evaluations", url: '/game/umpire-evaluations'},
+        { title: "View Match Reports", url: '/game/match-reports'},
+        { title: "Select MOMs", url: '/admin/mom'},
         { title: "divider" },
         { title: "COC Violations", url: '/coc-violations'},
         { title: "divider" },

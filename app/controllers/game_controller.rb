@@ -16,7 +16,7 @@ class GameController < ActionController::Base
 
 	def confirm_game_list
 		if !current_user.is_captain
-			redirect_to root
+			redirect_to '/'
 		end
 		
 		@games = []
@@ -36,7 +36,7 @@ class GameController < ActionController::Base
     @game = Game.find(params[:id])
 
 		if !current_user.is_captain
-			redirect_to root
+			redirect_to '/'
 		end
 	end
 
@@ -71,7 +71,7 @@ class GameController < ActionController::Base
 
   def confirm_umpire_list
     if !current_user.is_captain
-      redirect_to root
+      redirect_to '/'
     end
 
     @games = []
@@ -88,7 +88,7 @@ class GameController < ActionController::Base
     @umpires = User.where(umpire_level: ['0+', '1', '2']).order('last_name ASC')
 
     if !current_user.is_captain
-      redirect_to root
+      redirect_to '/'
     end
 	end
 
@@ -116,7 +116,7 @@ class GameController < ActionController::Base
 
   def confirm_umpire_list
     if !current_user.is_captain
-      redirect_to root
+      redirect_to '/'
     end
 
     @games = []
@@ -130,7 +130,7 @@ class GameController < ActionController::Base
 
   def umpire_evaluations_list
     if !current_user.is_ec
-      redirect_to root
+      redirect_to '/'
     end
 
     @evals = UmpireEvaluation.all || nil
@@ -138,7 +138,7 @@ class GameController < ActionController::Base
 
   def umpire_evaluations_captain_list
     if !current_user.is_captain
-      redirect_to root
+      redirect_to '/'
     end
 
     @fixtures = []
@@ -192,7 +192,7 @@ class GameController < ActionController::Base
 
   def match_reports_list
     if !current_user.is_ec
-      redirect_to root
+      redirect_to '/'
     end
 
     @reports = MatchReport.all || nil
@@ -200,7 +200,7 @@ class GameController < ActionController::Base
 
   def match_reports_captain_list
     if !current_user.is_captain
-      redirect_to root
+      redirect_to '/'
     end
 
     @fixtures = []

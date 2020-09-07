@@ -13,6 +13,7 @@ class Club < ApplicationRecord
 
   rails_admin do
     list do
+      field :id
       field :name
       field :acronym
       field :address

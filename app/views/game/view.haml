@@ -7,7 +7,7 @@
 				- if @game.hc
 					.confirm__time
 						.confirm__label Confirmed at
-						= @game.get_home_comment.updated_at.strftime("%b - %e at %l:%M %p")
+						= @game.get_home_comment.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
 					.confirm__comments
 						.confirm__label Comments
 						= @game.get_home_comment.content
@@ -18,7 +18,7 @@
 				- if @game.ac
 					.confirm__time
 						.confirm__label Confirmed at
-						= @game.get_away_comment.updated_at.strftime("%b - %e at %l:%M %p")
+						= @game.get_away_comment.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
 					.confirm__comments
 						.confirm__label Comments
 						= @game.get_away_comment.content
@@ -29,7 +29,7 @@
 				- if @game.ac
 					.confirm__time
 						.confirm__label Confirmed at
-						= @game.get_umpire_comment.updated_at.strftime("%b - %e at %l:%M %p")
+						= @game.get_umpire_comment.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
 					.confirm__umpire
 						.confirm__label Umpire
 						= @game.get_umpire_name

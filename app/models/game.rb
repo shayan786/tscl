@@ -1,9 +1,9 @@
 class Game < ApplicationRecord
-	belongs_to :season
-	has_many :comments
-	has_many :umpire_evaluations
-	has_one :match_report
-	has_one :mom
+	belongs_to :season, validate: false
+	has_many :comments, validate: false
+	has_many :umpire_evaluations, validate: false
+	has_one :match_report, validate: false
+	has_one :mom, validate: false
 
 	def get_away_acronym
 		return Club.find_by(id: self.away_id).acronym
