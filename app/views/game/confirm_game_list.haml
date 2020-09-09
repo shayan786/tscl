@@ -9,7 +9,7 @@
 				- if flash[:error]
 					.alert.alert-danger{:role => "alert"}
 						= flash[:error]
-				- if @games
+				- if @games.count > 0
 					%table.table.table-dark
 						%thead
 							%tr
@@ -33,7 +33,7 @@
 				- else
 					.div.empty
 						%i{class: "fa fa-frown-o"}
-						%h4 Nothing to show here.
+						%h4 No games to confirm.
 
 	.col-md-4
 		= render 'shared/points_table'

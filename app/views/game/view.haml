@@ -26,7 +26,7 @@
 					.confirm__nope Not yet confirmed.
 				.divider
 				.h5= "Umpire - #{@game.get_umpire_acronym}"
-				- if @game.ac
+				- if @game.uc
 					.confirm__time
 						.confirm__label Confirmed at
 						= @game.get_umpire_comment.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
