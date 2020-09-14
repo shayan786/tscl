@@ -87,10 +87,6 @@ class Game < ApplicationRecord
 		Club.all.map{|c| [c.acronym, c.id]}
 	end
 
-	def over_format_enum
-		[['35 Over', 35], ['T20', 20]]
-	end
-
 	def display_game
 		self.date.strftime("%-m/%-d/%y") + ' - ' + self.get_home_acronym + ' vs ' + self.get_away_acronym
 	end
@@ -99,8 +95,13 @@ class Game < ApplicationRecord
 		# object_label_method :display_game
 
   	list do
+  		sort_by :date
   		field :date
-  		field :season
+  		field :season do
+  			pretty_value do
+  				"#{value.try(:year)} - #{value.try(:over_format)} Over"
+  			end
+  		end
   		field :home_id
   		field :away_id
   		field :umpire_id
@@ -108,10 +109,28 @@ class Game < ApplicationRecord
 
   	create do
   		field :date
-  		field :season
+  		field :season do
+  			inline_add false
+  			inline_edit false
+  		end
   		field :home_id
   		field :away_id
   		field :umpire_id
+  	end
+
+  	edit do
+  		field :date
+  		field :home_id
+  		field :away_id
+  		field :umpire_id
+  		field :season, :enum do
+  			enum do
+  				Season.all.collect {|s| ["#{s.year} - #{s.over_format} Over", s.id]}
+  			end
+  		end
+  		field :hc
+  		field :ac
+  		field :uc
   	end
   end
 end
