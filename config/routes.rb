@@ -37,12 +37,14 @@ Rails.application.routes.draw do
   post '/game/confirm/umpire/new'                 =>  'game#confirm_umpire_new'
 
   get '/game/umpire-evaluations'                  =>  'game#umpire_evaluations_list'
+  get '/game/umpire-evaluations/:year/:over_format'     =>  'game#umpire_evaluations_list'
   get '/game/umpire-evaluations/captain'          =>  'game#umpire_evaluations_captain_list'
   get '/game/umpire-evaluations/form/:id'         =>  'game#umpire_evaluations_form'
   post 'game/umpire-evaluations/new'              =>  'game#umpire_evaluations_new'
   get '/game/umpire-evaluations/:id'              =>  'game#umpire_evaluation'
 
   get '/game/match-reports'                       =>  'game#match_reports_list'
+  get '/game/match-reports/:year/:over_format'    =>  'game#match_reports_list'
   get '/game/match-reports/captain'               =>  'game#match_reports_captain_list'
   get '/game/match-reports/form/:id'              =>  'game#match_reports_form'
   post 'game/match-reports/new'                   =>  'game#match_reports_new'
