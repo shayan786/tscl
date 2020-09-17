@@ -133,7 +133,25 @@ class GameController < ActionController::Base
       redirect_to '/'
     end
 
-    @evals = UmpireEvaluation.all || nil
+    @evals = []
+
+    if (params[:year] && params[:over_format])
+      season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
+
+      if season
+        season.games.each do |g|
+          g.umpire_evaluations.each do |ue|
+            @evals.push(ue)
+          end
+        end
+      end
+    else
+      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+        g.umpire_evaluations.each do |ue|
+          @evals.push(ue)
+        end
+      end
+    end
   end
 
   def umpire_evaluations_captain_list
@@ -195,7 +213,25 @@ class GameController < ActionController::Base
       redirect_to '/'
     end
 
-    @reports = MatchReport.all || nil
+    @reports = []
+
+    if (params[:year] && params[:over_format])
+      season = Season.find_by(year: params[:year], over_format: params[:over_format]) || nil
+
+      if season
+        season.games.each do |g|
+          if g.match_report
+            @reports.push(g.match_report)
+          end
+        end
+      end
+    else
+      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+        if g.match_report
+          @reports.push(g.match_report)
+        end
+      end
+    end
   end
 
   def match_reports_captain_list

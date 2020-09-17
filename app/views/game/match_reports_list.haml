@@ -9,7 +9,18 @@
 				- if flash[:error]
 					.alert.alert-danger{:role => "alert"}
 						= flash[:error]
-				- if @reports
+				.row.options
+					.form-group.col-md-3
+						%label{:for => "year"} Year
+						%select#year.form-control
+							- Season.all.each do |s|
+								%option{value: "#{s.year}"}= s.year
+					.form-group.col-md-3
+						%label{:for => "overFormat"} Over Format
+						%select#overFormat.form-control
+							%option{:selected => "selected", value: '35'} 35
+							%option{value: '20'} 20
+				- if @reports.count > 0
 					%table.table.table-dark
 						%thead
 							%tr
@@ -34,3 +45,8 @@
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'
+
+%script
+	handleMatchReports()
+	- if (params[:year] && params[:over_format])
+		setYearAndOverFormat("#{params[:year]}", "#{params[:over_format]}")
