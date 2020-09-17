@@ -19,7 +19,7 @@
 								%th Umpire
 								%th.text-center Actions
 						%tbody
-							- @fixtures.each do |f|
+							- @fixtures.sort_by(&:date).each do |f|
 								%tr
 									%td= f.date.strftime("%b %e")
 									%td= f.get_home_acronym

@@ -19,7 +19,7 @@
 								%th Ground
 								%th.text-center Actions
 						%tbody
-							- @games.each do |g|
+							- @games.sort_by(&:date).each do |g|
 								%tr
 									%td= g.date.strftime("%b %e")
 									%td= g.get_home_acronym

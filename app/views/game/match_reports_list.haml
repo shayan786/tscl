@@ -18,7 +18,7 @@
 								%th Away
 								%th.text-center Actions
 						%tbody
-							- @reports.each do |e|
+							- @reports.sort_by(&:created_at).each do |e|
 								%tr
 									%td= e.get_game.date.strftime("%b %e")
 									%td= e.get_game.get_home_acronym

@@ -22,15 +22,21 @@ class Game < ApplicationRecord
 	end
 
 	def get_umpire_name
-		umpire = User.find(self.umpire_user_id)
-
-		return "#{umpire.first_name} #{umpire.last_name}"
+		if self.umpire_user_id
+			umpire = User.find(self.umpire_user_id)
+			return "#{umpire.first_name} #{umpire.last_name}"
+		else
+			return "No umpire user assigned"
+		end
 	end
 
 	def get_umpire_level
-		umpire = User.find(self.umpire_user_id)
-
-		return umpire.umpire_level
+		if self.umpire_user_id
+			umpire = User.find(self.umpire_user_id)
+			return umpire.umpire_level
+		else
+			return "No umpire user assigned"
+		end
 	end
 
 	def get_home_comment
