@@ -1,6 +1,6 @@
 class MatchReport < ApplicationRecord
-	belongs_to :users
-	belongs_to :games
+	belongs_to :user
+	belongs_to :game
 
 	def self.match_report_options
 		[

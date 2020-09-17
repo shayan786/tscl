@@ -1,6 +1,6 @@
 class UmpireEvaluation < ApplicationRecord
-	belongs_to :users
-	belongs_to :games
+	belongs_to :user, validate: false
+	belongs_to :game
 
   def self.neutral_umpire_options
     [
