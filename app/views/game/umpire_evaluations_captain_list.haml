@@ -13,6 +13,7 @@
 					%table.table.table-dark
 						%thead
 							%tr
+								%th No.
 								%th Date
 								%th Home
 								%th Away
@@ -21,6 +22,7 @@
 						%tbody
 							- @fixtures.sort_by(&:date).each do |f|
 								%tr
+									%td= f.id
 									%td= f.date.strftime("%b %e")
 									%td= f.get_home_acronym
 									%td= f.get_away_acronym

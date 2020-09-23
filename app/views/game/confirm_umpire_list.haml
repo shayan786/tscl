@@ -13,6 +13,7 @@
 					%table.table.table-dark
 						%thead
 							%tr
+								%th No.
 								%th Date
 								%th Home
 								%th Away
@@ -21,6 +22,7 @@
 						%tbody
 							- @games.sort_by(&:date).each do |g|
 								%tr
+									%td= g.id
 									%td= g.date.strftime("%b %e")
 									%td= g.get_home_acronym
 									%td= g.get_away_acronym

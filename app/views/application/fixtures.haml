@@ -18,6 +18,7 @@
 					%table.table.table-dark
 						%thead
 							%tr
+								%th No.
 								%th Date
 								%th Home
 								%th Away
@@ -33,6 +34,7 @@
 						%tbody
 							- @fixtures.each do |f|
 								%tr
+									%td= f.id
 									%td= f.date.strftime("%b %e")
 									%td= Club.find_by(id: f.home_id).acronym
 									%td= Club.find_by(id: f.away_id).acronym

@@ -5,6 +5,7 @@
 			%table.table.table-dark
 				%thead
 					%tr
+						%th No.
 						%th Date
 						%th Home
 						%th Away
@@ -12,6 +13,7 @@
 				%tbody
 					- $upcoming_games.each do |g|
 						%tr
+							%td= g.id
 							%td= g.date.strftime("%b %e")
 							%td= Club.find_by(id: g.home_id).acronym
 							%td= Club.find_by(id: g.away_id).acronym
