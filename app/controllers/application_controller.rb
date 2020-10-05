@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_navigation
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+  $upcoming_games = Season.find_by(year: Time.now.year, over_format: 'T20').games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $points = Season.find_by(year: Time.now.year).points.order('total_points DESC')
   $moms = Mom.last(5)
 
