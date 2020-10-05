@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :set_navigation
+  $current_over_format = 'T20'
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year, over_format: 'T20').games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-  $points = Season.find_by(year: Time.now.year, over_format: 'T20').points.order('total_points DESC')
+  $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format = 'T20').games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format = 'T20').points.order('total_points DESC')
   $moms = Mom.last(5)
 
   def set_navigation
@@ -79,7 +80,7 @@ class ApplicationController < ActionController::Base
 
       @fixtures = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).games.order('date ASC') : nil;
     else
-      @fixtures = Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC') || nil
+      @fixtures = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC') || nil
     end
   end
 
@@ -89,7 +90,7 @@ class ApplicationController < ActionController::Base
 
       @points = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).points.order('total_points DESC') : nil;
     else
-      @points = Season.find_by(year: Time.now.year, over_format: '35').points.order('total_points DESC') || nil
+      @points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC') || nil
     end
   end
 

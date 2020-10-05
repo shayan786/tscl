@@ -1,9 +1,10 @@
 class GameController < ActionController::Base
 	before_action :authenticate, :set_navigation
+  $current_over_format = 'T20'
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year, over_format: 'T20').games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+  $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $clubs = Club.all
-  $points = Season.find_by(year: Time.now.year, over_format: 'T20').points.order('total_points DESC')
+  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC')
 
   def set_navigation
     @navigation = Navigation.items
@@ -146,7 +147,7 @@ class GameController < ActionController::Base
         end
       end
     else
-      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC').each do |g|
         g.umpire_evaluations.each do |ue|
           @evals.push(ue)
         end
@@ -226,7 +227,7 @@ class GameController < ActionController::Base
         end
       end
     else
-      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC').each do |g|
         if g.match_report
           @reports.push(g.match_report)
         end
@@ -290,7 +291,7 @@ class GameController < ActionController::Base
         end
       end
     else
-      Season.find_by(year: Time.now.year, over_format: '35').games.order('date ASC').each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC').each do |g|
         if g.mom
           @moms.push(g.mom)
         end
