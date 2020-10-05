@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   before_action :set_navigation
-  $current_over_format = 'T20'
+  $current_over_format = Navigation.current_season[:over_format]
   $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format = 'T20').games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format = 'T20').points.order('total_points DESC')
+  $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC')
   $moms = Mom.last(5)
 
   def set_navigation

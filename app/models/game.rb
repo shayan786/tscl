@@ -115,9 +115,10 @@ class Game < ApplicationRecord
 
   	create do
   		field :date
-  		field :season do
-  			inline_add false
-  			inline_edit false
+  		field :season_id, :enum do
+  			enum do
+  				Season.all.map{|s| ["#{s.year} - #{s.over_format} Over", s.id]}
+  			end
   		end
   		field :home_id
   		field :away_id

@@ -1,6 +1,6 @@
 class GameController < ActionController::Base
 	before_action :authenticate, :set_navigation
-  $current_over_format = 'T20'
+  $current_over_format = Navigation.current_season[:over_format]
   $news = News.last(3).reverse
   $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
   $clubs = Club.all
@@ -163,11 +163,11 @@ class GameController < ActionController::Base
     @fixtures = []
 
     current_user.clubs.each do |c|
-      Game.where(home_id: c.id).each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(home_id: c.id).each do |g|
         @fixtures.push(g)
       end
 
-      Game.where(away_id: c.id).each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(away_id: c.id).each do |g|
         @fixtures.push(g)
       end
     end
