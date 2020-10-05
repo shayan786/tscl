@@ -243,7 +243,7 @@ class GameController < ActionController::Base
     @fixtures = []
 
     current_user.clubs.each do |c|
-      Game.where(umpire_id: c.id).each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
         @fixtures.push(g)
       end
     end
