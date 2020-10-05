@@ -23,11 +23,11 @@ class GameController < ActionController::Base
 		@games = []
 
 		current_user.clubs.each do |c|
-			Season.find_by(year: Time.now.year).games.where(home_id: c.id).each do |g|
+			Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(home_id: c.id).each do |g|
 				@games.push(g)
 			end
 
-			Season.find_by(year: Time.now.year).games.where(away_id: c.id).each do |g|
+			Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(away_id: c.id).each do |g|
 				@games.push(g)
 			end
 		end
@@ -78,7 +78,7 @@ class GameController < ActionController::Base
     @games = []
 
     current_user.clubs.each do |c|
-      Season.find_by(year: Time.now.year).games.where(umpire_id: c.id).each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
         @games.push(g)
       end
     end
@@ -123,7 +123,7 @@ class GameController < ActionController::Base
     @games = []
 
     current_user.clubs.each do |c|
-      Season.find_by(year: Time.now.year).games.where(umpire_id: c.id).each do |g|
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
         @games.push(g)
       end
     end
