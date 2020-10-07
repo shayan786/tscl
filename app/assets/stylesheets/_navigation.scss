@@ -57,6 +57,11 @@ nav {
     display: flex;
     flex-flow: column nowrap;
 
+    &__items {
+      display: none;
+      flex-flow: column nowrap;
+    }
+
     a {
       padding: 0.5rem 1.2rem;
       font-size: 0.9rem;
