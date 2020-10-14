@@ -28,9 +28,9 @@ class ApplicationController < ActionController::Base
 
   def playing_conditions
     if $current_over_format = 'T20'
-      @doc = Document.find_by(doc_type: '35_playing_conditions')
-    else
       @doc = Document.find_by(doc_type: '20_playing_conditions')
+    else
+      @doc = Document.find_by(doc_type: '35_playing_conditions')
     end
   end
 
