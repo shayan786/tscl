@@ -130,7 +130,7 @@ class GameController < ActionController::Base
   end
 
   def umpire_evaluations_list
-    if !current_user.is_ec
+    if !current_user
       redirect_to '/'
     end
 
@@ -210,7 +210,7 @@ class GameController < ActionController::Base
   end
 
   def match_reports_list
-    if !current_user.is_ec
+    if !current_user
       redirect_to '/'
     end
 

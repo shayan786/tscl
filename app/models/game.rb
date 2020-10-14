@@ -22,7 +22,7 @@ class Game < ApplicationRecord
 	end
 
 	def get_umpire_name
-		if self.umpire_user_id
+		if self.umpire_user_id && User.exists?(self.umpire_user_id)
 			umpire = User.find(self.umpire_user_id)
 			return "#{umpire.first_name} #{umpire.last_name}"
 		else

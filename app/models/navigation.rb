@@ -67,6 +67,9 @@ class Navigation < ApplicationRecord
       ]
     elsif current_user
       [
+        { title: "View Umpire Evaluations", url: '/game/umpire-evaluations'},
+        { title: "View Match Reports", url: '/game/match-reports'},
+        { title: "divider" },
         { title: "COC Violations", url: '/coc-violations'},
         { title: "divider" },
         { title: "Logout", url: '/users/sign_out', icon: 'sign-out'}
