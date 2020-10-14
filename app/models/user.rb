@@ -4,13 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable
 
-  has_many :user_club_associations
+  has_many :user_club_associations, :dependent => :delete_all, :autosave => true
   has_many :clubs, :through => :user_club_associations
   has_many :comments
   has_many :umpire_evaluations
   has_many :match_reports
   has_many :moms
 
+  # accepts_nested_attributes_for :clubs, :allow_destroy => true
+  attr_accessor :clubs_attributes
   attr_accessor :skip_password_validation  # virtual attribute to skip password validation while saving
 
   def club_ids=(ids)

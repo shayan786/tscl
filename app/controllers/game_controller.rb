@@ -299,6 +299,10 @@ class GameController < ActionController::Base
     end
   end
 
+  def winners
+    @winners = Winner.all.order('created_at DESC')
+  end
+
 	def authenticate
 		if !current_user
 			redirect_to new_user_session_path

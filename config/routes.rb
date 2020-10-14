@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/game-zone/moms'                           =>  'game#moms'
   get '/game-zone/moms/:year/:over_format'        =>  'game#moms'
 
+  get '/game-zone/winners'                        =>  'game#winners'
+
   get '/game/confirm/captain'											=> 	'game#confirm_game_list'
   get '/game/confirm/captain/:id'									=> 	'game#confirm_captain'
   post '/game/confirm/new'                        =>  'game#confirm_captain_new'

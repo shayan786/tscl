@@ -7,7 +7,8 @@ class Navigation < ApplicationRecord
         { title: 'Points Table', url: '/game-zone/points-table' }, 
         { title: 'Approved Umpires', url: '/game-zone/approved-umpires' },
         { title: 'Players', url: '/game-zone/players' },
-        { title: 'Man of the Match', url: '/game-zone/moms' }
+        { title: 'Man of the Match', url: '/game-zone/moms' },
+        { title: 'Winners', url: '/game-zone/winners' }
         ] },
       { title: 'Operations', url: '#', icon: 'folder-open', children: [
         { title: 'Constitution', url: '/operations/constitution' },

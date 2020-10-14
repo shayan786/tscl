@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_14_193108) do
+ActiveRecord::Schema.define(version: 2020_10_14_163821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -227,6 +227,14 @@ ActiveRecord::Schema.define(version: 2020_09_14_193108) do
     t.string "umpire_level"
     t.boolean "admin", default: false
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "winners", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "season_id"
+    t.integer "club_id"
+    t.index ["season_id"], name: "index_winners_on_season_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
