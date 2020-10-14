@@ -130,6 +130,7 @@ class Game < ApplicationRecord
   		field :home_id
   		field :away_id
   		field :umpire_id
+  		field :umpire_user_id
   		field :season_id, :enum do
   			enum do
   				Season.all.map{|s| ["#{s.year} - #{s.over_format} Over", s.id]}

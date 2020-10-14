@@ -27,7 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def playing_conditions
-    @doc = Document.find_by(doc_type: '35_playing_conditions')
+    if $current_over_format = 'T20'
+      @doc = Document.find_by(doc_type: '35_playing_conditions')
+    else
+      @doc = Document.find_by(doc_type: '20_playing_conditions')
+    end
   end
 
   def laws_of_cricket
