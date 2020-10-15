@@ -16,6 +16,7 @@ class Club < ApplicationRecord
       field :id
       field :name
       field :acronym
+      field :is_active
       field :address
       field :ground
       field :map

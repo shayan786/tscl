@@ -32,6 +32,7 @@ class User < ApplicationRecord
     object_label_method :get_full_name
 
   	create do
+      field :tscl_id
   		field :last_name
   		field :first_name
       field :password
@@ -45,6 +46,7 @@ class User < ApplicationRecord
   	end
 
   	edit do
+      field :tscl_id
   		field :last_name
   		field :first_name
   		field :email
@@ -57,7 +59,7 @@ class User < ApplicationRecord
   	end
 
   	list do
-      field :id
+      field :tscl_id
   		field :last_name
   		field :first_name
   		field :email
@@ -69,6 +71,7 @@ class User < ApplicationRecord
   	end
 
     import do
+      field :tscl_id
       field :last_name
       field :first_name
       field :password

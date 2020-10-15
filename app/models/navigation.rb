@@ -8,7 +8,7 @@ class Navigation < ApplicationRecord
         { title: 'Approved Umpires', url: '/game-zone/approved-umpires' },
         { title: 'Players', url: '/game-zone/players' },
         { title: 'Man of the Match', url: '/game-zone/moms' },
-        { title: 'Winners', url: '/game-zone/winners' }
+        { title: 'Winners by Year', url: '/game-zone/winners' }
         ] },
       { title: 'Operations', url: '#', icon: 'folder-open', children: [
         { title: 'Constitution', url: '/operations/constitution' },
@@ -57,6 +57,9 @@ class Navigation < ApplicationRecord
       ]
     elsif current_user && current_user.is_captain
       [
+        { title: "View Umpire Evaluations", url: '/game/umpire-evaluations'},
+        { title: "View Match Reports", url: '/game/match-reports'},
+        { title: "divider" },
         { title: "Confirm Game", url: '/game/confirm/captain'},
         { title: "Confirm Umpiring", url: '/game/confirm/umpire'},
         { title: "Complete Match Report", url: '/game/match-reports/captain'},

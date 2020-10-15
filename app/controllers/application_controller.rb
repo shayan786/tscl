@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def clubs_grounds
-    @clubs = Club.all.order('name ASC')
+    @clubs = Club.where(is_active: true).order('name ASC')
   end
 
   def constitution

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_14_163821) do
+ActiveRecord::Schema.define(version: 2020_10_15_171450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_163821) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "map"
+    t.boolean "is_active"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -226,6 +227,7 @@ ActiveRecord::Schema.define(version: 2020_10_14_163821) do
     t.boolean "is_active"
     t.string "umpire_level"
     t.boolean "admin", default: false
+    t.integer "tscl_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

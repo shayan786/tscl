@@ -7,7 +7,7 @@
 					%table.table.table-dark
 						%thead
 							%tr
-								%th ID
+								%th TSCL ID
 								%th Last Name
 								%th First Name
 								%th Clubs (s)
@@ -15,7 +15,7 @@
 						%tbody
 							- @players.each do |p|
 								%tr
-									%td= p.id
+									%td= p.tscl_id
 									%td= p.last_name
 									%td= p.first_name
 									%td
