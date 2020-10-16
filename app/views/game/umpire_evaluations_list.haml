@@ -28,6 +28,7 @@
 								%th Date
 								%th Home
 								%th Away
+								%th Umpire
 								%th.text-center Actions
 						%tbody
 							- @evals.each do |e|
@@ -36,6 +37,7 @@
 									%td= e.get_game.date.strftime("%b %e")
 									%td= e.get_game.get_home_acronym
 									%td= e.get_game.get_away_acronym
+									%td= e.get_game.get_umpire_acronym
 									%td.text-center
 										%a{href: "/game/umpire-evaluations/#{e.id}", "data-toggle" => "tooltip", title: "View Evaluation", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}

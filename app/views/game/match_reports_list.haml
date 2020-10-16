@@ -28,6 +28,7 @@
 								%th Date
 								%th Home
 								%th Away
+								%th Umpire
 								%th.text-center Actions
 						%tbody
 							- @reports.sort_by(&:created_at).each do |e|
@@ -36,6 +37,7 @@
 									%td= e.get_game.date.strftime("%b %e")
 									%td= e.get_game.get_home_acronym
 									%td= e.get_game.get_away_acronym
+									%td= e.get_game.get_umpire_acronym
 									%td.text-center.actions
 										%a{href: "/game/match-reports/#{e.id}", "data-toggle" => "tooltip", title: "View Report", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}

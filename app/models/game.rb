@@ -68,7 +68,7 @@ class Game < ApplicationRecord
 	end
 
 	def get_umpire_comment
-		umpire = Club.find(self.away_id)
+		umpire = Club.find(self.umpire_id)
 		umpire_comment = nil
 
 		self.comments.each do |c|

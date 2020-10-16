@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   $current_over_format = Navigation.current_season[:over_format]
   $news = News.last(3).reverse
   $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC')
+  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
   $moms = Mom.last(5)
 
   def set_navigation
