@@ -40,43 +40,43 @@ class Game < ApplicationRecord
 	end
 
 	def get_home_comment
-		home = Club.find(self.home_id)
 		home_comment = nil
 
 		self.comments.each do |c|
-			clubs = User.find(c.user_id).clubs
-			if clubs.includes(id: self.home_id)
-				home_comment = c
+			c.user.clubs.each do |club|
+				if club.id == self.home_id
+					home_comment = c
+				end
 			end
-		end	
+		end
 
 		return home_comment
 	end
 
 	def get_away_comment
-		away = Club.find(self.away_id)
 		away_comment = nil
 
 		self.comments.each do |c|
-			clubs = User.find(c.user_id).clubs
-			if clubs.includes(id: self.away_id)
-				away_comment = c
+			c.user.clubs.each do |club|
+				if club.id == self.away_id
+					away_comment = c
+				end
 			end
-		end	
+		end
 
 		return away_comment
 	end
 
 	def get_umpire_comment
-		umpire = Club.find(self.umpire_id)
 		umpire_comment = nil
 
 		self.comments.each do |c|
-			clubs = User.find(c.user_id).clubs
-			if clubs.includes(id: self.umpire_id)
-				umpire_comment = c
+			c.user.clubs.each do |club|
+				if club.id == self.umpire_id
+					umpire_comment = c
+				end
 			end
-		end	
+		end
 
 		return umpire_comment
 	end

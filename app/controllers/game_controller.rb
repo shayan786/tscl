@@ -37,8 +37,13 @@ class GameController < ActionController::Base
     @game = Game.find(params[:id])
 
 		if !current_user.is_captain
+      flash[:error] = "Unauthorized"
 			redirect_to '/'
-		end
+    elsif @game.hc && @game.ac
+      flash[:error] = "Game has already been confirmed."
+      redirect_to '/game/confirm/captain'
+    end
+
 	end
 
   def confirm_captain_new
@@ -89,7 +94,11 @@ class GameController < ActionController::Base
     @umpires = User.where(umpire_level: ['0+', '1', '2']).order('last_name ASC')
 
     if !current_user.is_captain
+      flash[:error] = "Unauthorized."
       redirect_to '/'
+    elsif @game.uc
+      flash[:error] = "Umpiring has already been confirmed."
+      redirect_to '/game/confirm/umpire'
     end
 	end
 

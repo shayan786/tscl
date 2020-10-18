@@ -9,7 +9,7 @@
 				- if flash[:error]
 					.alert.alert-danger{:role => "alert"}
 						= flash[:error]
-				- if @games
+				- if @games.length > 0
 					%table.table.table-dark
 						%thead
 							%tr
@@ -17,6 +17,7 @@
 								%th Date
 								%th Home
 								%th Away
+								%th Umpire
 								%th Ground
 								%th.text-center Actions
 						%tbody
@@ -26,10 +27,12 @@
 									%td= g.date.strftime("%b %e")
 									%td= g.get_home_acronym
 									%td= g.get_away_acronym
+									%td= g.get_umpire_acronym
 									%td= g.get_ground
 									%td.actions.text-center
-										%a{href: "/game/confirm/umpire/#{g.id}", "data-toggle" => "tooltip", title: "Confirm Umpiring", "data-placement" => "bottom"}
-											%i{class: "fa fa-check-square"}
+										- if !g.uc
+											%a{href: "/game/confirm/umpire/#{g.id}", "data-toggle" => "tooltip", title: "Confirm Umpiring", "data-placement" => "bottom"}
+												%i{class: "fa fa-check-square"}
 										%a{href: "/game/#{g.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}
 				- else

@@ -8,6 +8,9 @@
 					.confirm__time
 						.confirm__label Confirmed at
 						= @game.get_home_comment.created_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
+					.confirm__time
+						.confirm__label Confirmed by
+						= @game.get_home_comment.user.get_full_name
 					.confirm__comments
 						.confirm__label Comments
 						= @game.get_home_comment.content
@@ -19,6 +22,9 @@
 					.confirm__time
 						.confirm__label Confirmed at
 						= @game.get_away_comment.created_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
+					.confirm__time
+						.confirm__label Confirmed by
+						= @game.get_away_comment.user.get_full_name
 					.confirm__comments
 						.confirm__label Comments
 						= @game.get_away_comment.content

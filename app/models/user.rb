@@ -90,7 +90,9 @@ class User < ApplicationRecord
   end
 
   def get_full_name
-    return "#{self.first_name} #{self.last_name}"
+    if self.first_name && self.first_name != ""
+      "#{self.first_name} #{self.last_name}"
+    end
   end
 
   private
