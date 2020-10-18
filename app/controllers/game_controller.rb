@@ -183,6 +183,10 @@ class GameController < ActionController::Base
   end
 
   def umpire_evaluations_form
+    if !current_user.is_captain
+      redirect_to '/'
+    end
+    
     @game = Game.find(params[:id])
   end
 

@@ -28,9 +28,8 @@
 									%td= f.get_away_acronym
 									%td= f.get_umpire_acronym
 									%td.text-center.actions
-										- if !UmpireEvaluation.find_by(game_id: f.id)
-											%a{href: "/game/umpire-evaluations/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Evaluation", "data-placement" => "bottom"}
-												%i{class: "fa fa-check-square"}
+										%a{href: "/game/umpire-evaluations/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Evaluation", "data-placement" => "bottom"}
+											%i{class: "fa fa-check-square"}
 										%a{href: "/game/#{f.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}
 				- else
