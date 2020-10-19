@@ -8,7 +8,7 @@
 						%label{:for => "year"} Year
 						%select#year.form-control
 							- Season.distinct.pluck(:year).reverse().each do |s|
-								%option{value: "#{s.year}"}= s
+								%option{value: "#{s}"}= s
 				- if @ec
 					%table.table.table-dark
 						%thead

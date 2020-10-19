@@ -14,7 +14,7 @@
 						%label{:for => "year"} Year
 						%select#year.form-control
 							- Season.distinct.pluck(:year).reverse().each do |s|
-								%option{value: "#{s.year}"}= s
+								%option{value: "#{s}"}= s
 					.form-group.col-md-3
 						%label{:for => "overFormat"} Over Format
 						%select#overFormat.form-control
