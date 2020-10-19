@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+  Season.connection.disable_query_cache!
+  Game.connection.disable_query_cache!
+  Points.connection.disable_query_cache!
+  
   before_action :set_navigation
   $current_over_format = Navigation.current_season[:over_format]
   $news = News.last(3).reverse

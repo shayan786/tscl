@@ -1,4 +1,8 @@
 class GameController < ActionController::Base
+  Season.connection.disable_query_cache!
+  Game.connection.disable_query_cache!
+  Points.connection.disable_query_cache!
+
 	before_action :authenticate, :set_navigation
   $current_over_format = Navigation.current_season[:over_format]
   $news = News.last(3).reverse
@@ -186,7 +190,7 @@ class GameController < ActionController::Base
     if !current_user.is_captain
       redirect_to '/'
     end
-    
+
     @game = Game.find(params[:id])
   end
 
