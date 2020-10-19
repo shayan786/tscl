@@ -7,8 +7,8 @@
 					.form-group.col-md-3
 						%label{:for => "year"} Year
 						%select#year.form-control
-							- Season.all.each do |s|
-								%option{value: "#{s.year}"}= s.year
+							- Season.distinct.pluck(:year).reverse().each do |s|
+								%option{value: "#{s.year}"}= s
 				- if @ec
 					%table.table.table-dark
 						%thead
