@@ -80,6 +80,16 @@ class Game < ApplicationRecord
 
 		return umpire_comment
 	end
+
+	def is_confirmed(current_user)
+		if (current_user.clubs.exists?(self.home_id) && self.hc)
+			return true
+		elsif (current_user.clubs.exists?(self.away_id) && self.ac)
+			return true
+		else
+			return false
+		end
+	end
 	
 	def home_id_enum
 		Club.all.map{|c| [c.acronym, c.id]}

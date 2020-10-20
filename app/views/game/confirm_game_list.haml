@@ -30,7 +30,7 @@
 									%td= g.get_umpire_acronym
 									%td= g.get_ground
 									%td.actions.text-center
-										- if !g.ac && !g.hc
+										- if !g.is_confirmed(current_user)
 											%a{href: "/game/confirm/captain/#{g.id}", "data-toggle" => "tooltip", title: "Confirm Game", "data-placement" => "bottom"}
 												%i{class: "fa fa-check-square"}
 										%a{href: "/game/#{g.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
