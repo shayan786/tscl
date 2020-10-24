@@ -3,7 +3,7 @@
 	.card-body
 		#carouselMOM.carousel-mom.slide{"data-ride" => "carousel"}
 			.carousel-inner
-				- $moms.each_with_index do |n, index|
+				- @moms.each_with_index do |n, index|
 					.carousel-item{:class => ("active" if index === 0)}
 						.image{:style => "background-image: url('#{url_for(n.image)}')"}
 						.carousel-caption.d-none.d-md-block
