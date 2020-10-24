@@ -4,7 +4,7 @@
     %li{"data-slide-to" => "1", "data-target" => "#carouselExampleCaptions"}
     %li{"data-slide-to" => "2", "data-target" => "#carouselExampleCaptions"}
   .carousel-inner
-    - $news.each_with_index do |n, index|
+    - @news.each_with_index do |n, index|
       .carousel-item{:class => ("active" if index === 0)}
         .image{:style => "background-image: url('#{url_for(n.image)}')"}
         .carousel-caption.d-none.d-md-block

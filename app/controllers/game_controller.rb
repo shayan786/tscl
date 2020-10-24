@@ -1,18 +1,14 @@
 class GameController < ActionController::Base
-  Season.connection.disable_query_cache!
-  Game.connection.disable_query_cache!
-  Points.connection.disable_query_cache!
-
 	before_action :authenticate, :set_navigation
   $current_over_format = Navigation.current_season[:over_format]
-  $news = News.last(3).reverse
-  $upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-  $clubs = Club.all
-  $points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
 
   def set_navigation
     @navigation = Navigation.items
     @actions = Navigation.actions(current_user)
+
+    @news = News.last(3).reverse
+    @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
   end
 
 	def view
