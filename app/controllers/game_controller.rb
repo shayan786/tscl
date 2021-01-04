@@ -7,8 +7,8 @@ class GameController < ActionController::Base
     @actions = Navigation.actions(current_user)
 
     @news = News.last(3).reverse
-    @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
+    @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
   end
 
 	def view
@@ -83,8 +83,10 @@ class GameController < ActionController::Base
     @games = []
 
     current_user.clubs.each do |c|
-      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
-        @games.push(g)
+      if Season.find_by(year: Time.now.year, over_format: $current_over_format) !== nil
+        Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
+          @games.push(g)
+        end
       end
     end
   end

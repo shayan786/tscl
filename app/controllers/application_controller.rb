@@ -7,8 +7,8 @@ class ApplicationController < ActionController::Base
     @actions = Navigation.actions(current_user)
 
     @news = News.last(3).reverse
-    @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
+    @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
+    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
     @moms = Mom.last(5)
   end
 
@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
 
       @fixtures = season ? Season.find_by(year: params[:year], over_format: params[:over_format]).games.order('date ASC') : nil;
     else
-      @fixtures = Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC') || nil
+      @fixtures = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? nil : Season.find_by(year: Time.now.year, over_format: $current_over_format).games.order('date ASC')
     end
   end
 
