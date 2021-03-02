@@ -3,12 +3,6 @@
 		.card.ec
 			.card-header Executive Committee
 			.card-body
-				.row.options
-					.form-group.col-md-3
-						%label{:for => "year"} Year
-						%select#year.form-control
-							- Season.distinct.pluck(:year).reverse().each do |s|
-								%option{value: "#{s}"}= s
 				- if @ec
 					%table.table.table-dark
 						%thead
@@ -31,8 +25,3 @@
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'
-
-%script
-	handleFixtures()
-	- if (params[:year] && params[:over_format])
-		setYearAndOverFormat("#{params[:year]}", "#{params[:over_format]}")
