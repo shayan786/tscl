@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def playing_conditions
-    @docs = Document.where(doc_type: '20_playing_conditions').or(Document.where(doc_type: '35_playing_conditions'))
+    @docs = Document.where(doc_type: '20_playing_conditions').or(Document.where(doc_type: '35_playing_conditions')).order('updated_at DESC')
   end
 
   def playing_conditions_view
