@@ -5,10 +5,11 @@
     %li{"data-slide-to" => "2", "data-target" => "#carouselExampleCaptions"}
   .carousel-inner
     - @news.each_with_index do |n, index|
-      .carousel-item{:class => ("active" if index === 0)}
-        .image{:style => "background-image: url('#{url_for(n.image)}')"}
-        .carousel-caption.d-none.d-md-block
-          %h5= n.title
+      - if n.image
+        .carousel-item{:class => ("active" if index === 0)}
+          .image{:style => "background-image: url('#{url_for(n.image)}')"}
+          .carousel-caption.d-none.d-md-block
+            %h5= n.title
   %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleCaptions", :role => "button"}
     %span.carousel-control-prev-icon{"aria-hidden" => "true"}
     %span.sr-only Previous
