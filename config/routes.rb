@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/operations/constitution'                  =>  'application#constitution'
   get '/operations/by-laws'                       =>  'application#by_laws'
   get '/operations/playing-conditions'            =>  'application#playing_conditions'
+  get '/operations/playing-conditions:/id'        =>  'application#playing_conditions_view'
   get '/operations/laws-of-cricket'               =>  'application#laws_of_cricket'
   get '/operations/meeting-minutes'               =>  'application#meeting_minutes'
   get '/operations/meeting-minutes/:id'           =>  'application#meeting_minutes_view'
