@@ -103,6 +103,10 @@ class Game < ApplicationRecord
 		Club.all.map{|c| [c.acronym, c.id]}
 	end
 
+	def ground_enum
+		Club.all.map{|c| [c.ground, c.ground]}
+	end
+
 	def display_game
 		self.date.strftime("%-m/%-d/%y") + ' - ' + self.get_home_acronym + ' vs ' + self.get_away_acronym
 	end
@@ -121,6 +125,7 @@ class Game < ApplicationRecord
   		field :home_id
   		field :away_id
   		field :umpire_id
+  		field :ground
   	end
 
   	create do
@@ -133,6 +138,7 @@ class Game < ApplicationRecord
   		field :home_id
   		field :away_id
   		field :umpire_id
+  		field :ground
   	end
 
   	edit do
@@ -140,6 +146,7 @@ class Game < ApplicationRecord
   		field :home_id
   		field :away_id
   		field :umpire_id
+  		field :ground
   		field :season_id, :enum do
   			enum do
   				Season.all.map{|s| ["#{s.year} - #{s.over_format} Over", s.id]}

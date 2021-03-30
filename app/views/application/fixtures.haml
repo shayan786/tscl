@@ -38,7 +38,7 @@
 									%td= f.date.strftime("%b %e")
 									%td= Club.find_by(id: f.home_id).acronym
 									%td= Club.find_by(id: f.away_id).acronym
-									%td= Club.find_by(id: f.home_id).ground
+									%td= f.ground || Club.find_by(id: f.home_id).ground
 									%td= Club.find_by(id: f.umpire_id).acronym
 									%td.text-center
 										- if f.hc
