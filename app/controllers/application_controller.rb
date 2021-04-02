@@ -20,11 +20,19 @@ class ApplicationController < ActionController::Base
   end
 
   def constitution
-    @doc = Document.find_by(doc_type: 'constitution')
+    @docs = Document.where(doc_type: 'constitution').order('updated_at DESC')
+  end
+
+  def constitution_view
+    @pc = Document.find(params[:id])
   end
 
   def by_laws
-    @doc = Document.find_by(doc_type: 'by_laws')
+    @docs = Document.where(doc_type: 'by_laws').order('updated_at DESC')
+  end
+
+  def by_laws_view
+    @pc = Document.find(params[:id])
   end
 
   def playing_conditions

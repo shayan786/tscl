@@ -1,9 +1,25 @@
 .row
 	.col-md-8
-		.card.document
+		.card.meeting-minutes
 			.card-header Constitution
 			.card-body
-				%object{type: 'application/pdf', data: "#{url_for(@doc.pdf)}", width: "100%", height: "100%"}
+				- if @docs.count > 0
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Title
+								%th.text-center Actions
+						%tbody
+							- @docs.each do |m|
+								%tr
+									%td= m.title
+									%td.text-center
+										%a{href: "/operations/constitution/#{m.id}", "data-toggle" => "tooltip", title: "View", "data-placement" => "bottom"}
+											%i{class: "fa fa-info-circle"}
+				- else
+					.div.empty
+						%i{class: "fa fa-frown-o"}
+						%h4 Nothing to show here.
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'

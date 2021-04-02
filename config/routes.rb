@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   get '/game-zone/players'                        =>  'application#players'
 
   get '/operations/constitution'                  =>  'application#constitution'
+  get '/operations/constitution/:id'              =>  'application#constitution_view'
   get '/operations/by-laws'                       =>  'application#by_laws'
+  get '/operations/by-laws/:id'                   =>  'application#by_laws_view'
   get '/operations/playing-conditions'            =>  'application#playing_conditions'
   get '/operations/playing-conditions/:id'        =>  'application#playing_conditions_view'
   get '/operations/laws-of-cricket'               =>  'application#laws_of_cricket'
