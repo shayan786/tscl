@@ -27,7 +27,7 @@ class Points < ApplicationRecord
 
     create do
       field :club
-      field :season, :enum do
+      field :season_id, :enum do
         enum do
           Season.all.map{|s| ["#{s.year} - #{s.over_format} Over", s.id]}
         end
