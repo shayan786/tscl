@@ -15,7 +15,9 @@ class Mom < ApplicationRecord
         end
       end
       field :user
-      field :image
+      field :image do
+        required true
+      end
   	end
 
   	list do
