@@ -47,6 +47,23 @@ class Points < ApplicationRecord
       field :palm
     end
 
+    edit do
+      field :wins
+      field :loses
+      field :tied
+      field :bbowl
+      field :bbat
+      field :ue
+      field :nur
+      field :ss
+      field :lzero
+      field :jc
+      field :nu
+      field :gc
+      field :palm
+      field :total_points
+    end
+
     configure :user_club_associations do
       visible(false)
     end
