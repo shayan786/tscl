@@ -90,6 +90,18 @@ class Game < ApplicationRecord
 			return false
 		end
 	end
+
+	def is_ue_completed
+		ues = self.umpire_evaluations
+
+		# if !ues
+		# 	return false,
+		# elsif 
+			
+		# else
+		# 	return true
+		# end	
+	end
 	
 	def home_id_enum
 		Club.all.map{|c| [c.acronym, c.id]}

@@ -8,7 +8,7 @@ class GameController < ActionController::Base
 
     @news = News.last(3).reverse
     @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
-    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('wins DESC, total_points DESC')
+    @points = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC')
   end
 
 	def view
