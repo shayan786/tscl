@@ -52,7 +52,7 @@
 									%td.text-right= p.nu || '-'
 									%td.text-right= p.gc || '-'
 									%td.text-right= p.palm || '-'
-									%td.text-right= p.total_points || '-'
+									%td.text-right= p.total_points.round || '-'
 				- else
 					.div.empty
 						%i{class: "fa fa-frown-o"}
