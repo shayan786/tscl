@@ -28,7 +28,7 @@
 									%td= g.get_home_acronym
 									%td= g.get_away_acronym
 									%td= g.get_umpire_acronym
-									%td= g.get_ground
+									%td= g.ground
 									%td.actions.text-center
 										- if !g.uc
 											%a{href: "/game/confirm/umpire/#{g.id}", "data-toggle" => "tooltip", title: "Confirm Umpiring", "data-placement" => "bottom"}
