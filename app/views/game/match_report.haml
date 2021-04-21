@@ -8,7 +8,7 @@
 					.item__value= @mr.get_current_user_club_acronym
 				.item
 					.item__label Completed on
-					.item__value= @mr.updated_at
+					.item__value= @mr.updated_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
 				.item
 					.item__label Ground
 					.item__value= @game.ground
