@@ -11,6 +11,10 @@ class Club < ApplicationRecord
   	end
   end
 
+  def get_captain_users
+    return self.users.where(is_captain: true)
+  end
+
   rails_admin do
     list do
       field :id
