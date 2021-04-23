@@ -50,6 +50,7 @@ class User < ApplicationRecord
   		field :last_name
   		field :first_name
   		field :email
+      field :phone
   		field :umpire_level
   		field :is_active
   		field :is_ec

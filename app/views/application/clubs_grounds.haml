@@ -10,7 +10,7 @@
 							%th Ground
 							%th Captain (s)
 							- if current_user
-								%th Email
+								%th Email / Phone
 							%th.text-center Map
 					%tbody
 						- @clubs.each do |c|
@@ -23,7 +23,7 @@
 								- if current_user
 									%td 
 										- c.get_captain_users.each do |c|
-											%div= c.email
+											%div= c.email + (c.phone ? " | " + c.phone : "")
 								%td.text-center
 									%a{target: "_blank", href: "#{c.map}", "data-toggle" => "tooltip", title: "Google Map", "data-placement" => "bottom"}
 										%i{class: "fa fa-external-link-square"}
