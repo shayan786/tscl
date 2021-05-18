@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     @news = News.last(3).reverse
     @upcoming_games = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where('date >= ?', DateTime.now).order('date ASC').limit(10)
     @points = Season.find_by(year: Time.now.year, over_format: $current_over_format) == nil ? [] : Season.find_by(year: Time.now.year, over_format: $current_over_format).points.order('total_points DESC')
-    @moms = Mom.order('created_at DESC').last(5)
+    @moms = Mom.order('created_at DESC').limit(5)
   end
 
   def index
