@@ -31,7 +31,7 @@ set :linked_dirs, %w{storage}
 # set :branch,        :master
 # set :format,        :pretty
 # set :log_level,     :debug
-set :keep_releases, 5
+set :keep_releases, 1
 
 ## Linked Files & Directories (Default None):
 # set :linked_files, %w{config/database.yml}

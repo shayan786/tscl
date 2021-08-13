@@ -17,7 +17,8 @@ class Navigation < ApplicationRecord
         { title: 'Laws of Cricket', url: '/operations/laws-of-cricket' },
         { title: 'Executive Committee', url: '/operations/ec' },
         { title: 'Judiciary Committee', url: '/operations/jc' },
-        { title: 'Meeting Minutes', url: '/operations/meeting-minutes' }
+        { title: 'Meeting Minutes', url: '/operations/meeting-minutes' },
+        { title: 'Resources', url: '/operations/resources' }
         ] },
       { title: 'Clubs & Grounds', url: '/clubs-and-grounds', icon: 'building' }
     ]

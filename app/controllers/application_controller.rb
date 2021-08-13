@@ -71,6 +71,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def resources
+    if !current_user
+      redirect_to root
+    end
+
+    @resources = Document.where(doc_type: 'resource').order('updated_at DESC')
+  end
+
+  def resources_view
+    @resource = Document.find(params[:id])
+  end
+
   def coc_violations
     if !current_user
       redirect_to root

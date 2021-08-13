@@ -9,7 +9,8 @@ class Document < ApplicationRecord
 			['T20 Playing Conditions', '20_playing_conditions'],
 			['Laws of Cricket', 'laws_of_cricket'],
 			['Meeting Minutes', 'meeting_minute'],
-			['COC Violation', 'coc_violation']
+			['COC Violation', 'coc_violation'],
+			['Resource', 'resource']
 		]
 	end
 end

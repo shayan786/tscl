@@ -1,0 +1,11 @@
+.row
+	.col-md-8
+		.card.document
+			.card-header= @resource.title
+			.card-body
+				%video{:controls => "", :height => "480", :width => "100%"}
+					%source{:src => "#{url_for(@resource.pdf)}", :type => "video/mp4"}
+					Your browser does not support the video tag.
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'

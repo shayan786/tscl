@@ -1,0 +1,21 @@
+.row
+	.col-md-8
+		.card.ec
+			.card-header Resources
+			.card-body
+				- if @resources.count > 0
+					%table.table.table-dark
+						%thead
+							%tr
+								%th Title
+								%th.text-center Actions
+						%tbody
+							- @resources.each do |m|
+								%tr
+									%td= m.title
+									%td.text-center
+										%a{href: "/operations/resources/#{m.id}", "data-toggle" => "tooltip", title: "View", "data-placement" => "bottom"}
+											%i{class: "fa fa-info-circle"}
+	.col-md-4
+		= render 'shared/points_table'
+		= render 'shared/upcoming_matches'
