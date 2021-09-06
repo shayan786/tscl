@@ -72,10 +72,6 @@ class ApplicationController < ActionController::Base
   end
 
   def resources
-    if !current_user
-      redirect_to root
-    end
-
     @resources = Document.where(doc_type: 'resource').order('updated_at DESC')
   end
 
