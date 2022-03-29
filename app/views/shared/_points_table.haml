@@ -17,7 +17,7 @@
 							%td= p.club.acronym
 							%td.text-right= p.wins || 0
 							%td.text-right= p.loses || 0
-							%td.text-right= p.total_points.round || 0
+							%td.text-right= p.total_points ? p.total_points.round : 0
 		- else
 			.div.empty{style: "margin-top: 5rem"}
 				%i{class: "fa fa-frown-o"}
