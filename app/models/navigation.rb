@@ -88,7 +88,7 @@ class Navigation < ApplicationRecord
 
   def self.current_season
     {
-      over_format: '35',
+      over_format: 'T20',
       year: '2022'
     }
   end

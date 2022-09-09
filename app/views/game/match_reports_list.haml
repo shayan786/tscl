@@ -18,8 +18,8 @@
 					.form-group.col-md-3
 						%label{:for => "overFormat"} Over Format
 						%select#overFormat.form-control
-							%option{:selected => "selected", value: '35'} 35
-							%option{value: 'T20'} 20
+							%option{value: '35'} 35
+							%option{:selected => "selected", value: 'T20'} 20
 				- if @reports.count > 0
 					%table.table.table-dark
 						%thead
