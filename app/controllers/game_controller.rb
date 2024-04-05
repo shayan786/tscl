@@ -333,10 +333,10 @@ class GameController < ActionController::Base
   end
 
   def umpire_evaluation_params
-    params.require(:umpire_evaluation).permit(:start_time, :nu_match_result, :nu_lbw, :nu_caught, :nu_run_out, :nu_no_balls, :nu_consistency, :nu_laws, :nu_signal, :nu_pressure, :nu_overall, :nu_attire, :nu_comm_partner, :nu_comm_captain, :lu_stump, :lu_run_out, :lu_no_balls, :lu_no_balls, :lu_consistency, :lu_laws, :lu_signal, :lu_overall, :lu_comm_nu, :lu_fair, :comments, :game_id)
+    params.require(:umpire_evaluation).permit(:start_time, :nu_match_result, :nu_lbw, :nu_caught, :nu_run_out, :nu_no_balls, :nu_consistency, :nu_laws, :nu_signal, :nu_pressure, :nu_overall, :nu_attire, :nu_comm_partner, :nu_comm_captain, :lu_stump, :lu_run_out, :lu_no_balls, :lu_no_balls, :lu_consistency, :lu_laws, :lu_signal, :lu_overall, :lu_comm_nu, :lu_fair, :comments, :game_id, :mom)
   end
 
   def match_report_params
-    params.require(:match_report).permit(:start_time, :match_result, :payment, :thirty_circle, :boundary, :scorecard, :water, :pitch, :condition, :wide, :behavior, :comments, :game_id)
+    params.require(:match_report).permit(:start_time, :match_result, :payment, :thirty_circle, :boundary, :scorecard, :water, :pitch, :condition, :wide, :behavior, :comments, :game_id, :mom)
   end
 end

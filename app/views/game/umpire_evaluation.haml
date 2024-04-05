@@ -199,6 +199,20 @@
 							%td.text-center
 								- if @ue.nu_comm_captain === 'N/A'
 									%i{class: "fa fa-check-square"}
+						%tr
+							%td Was the Medal for MOM distributed at the game
+							%td.text-center
+								- if @ue.mom === 'excellent'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.mom === 'fair'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.mom === 'poor'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @ue.mom === 'N/A'
+									%i{class: "fa fa-check-square"}
 				%table.table.table-dark
 					%thead
 						%tr

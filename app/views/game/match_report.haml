@@ -130,6 +130,17 @@
 							%td.text-center
 								- if @mr.behavior === 'see_comments'
 									%i{class: "fa fa-check-square"}
+						%tr
+							%td Was the Medal for MOM distributed at the game
+							%td.text-center
+								- if @mr.mom === 'yes'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.mom === 'no'
+									%i{class: "fa fa-check-square"}
+							%td.text-center
+								- if @mr.mom === 'see_comments'
+									%i{class: "fa fa-check-square"}
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'

@@ -39,6 +39,10 @@ class MatchReport < ApplicationRecord
       {
         title: 'Player Behavior',
         name: 'match_report[behavior]',
+      },
+      {
+        title: 'Was the Medal for MOM distributed at the game',
+        name: 'match_report[mom]',
       }
     ]
 	end

@@ -51,6 +51,10 @@ class UmpireEvaluation < ApplicationRecord
       {
         title: 'Communication with Captains',
         name: 'umpire_evaluation[nu_comm_captain]',
+      },
+      {
+        title: 'Was the Medal for MOM distributed at the game',
+        name: 'umpire_evaluation[mom]',
       }
     ]
   end
