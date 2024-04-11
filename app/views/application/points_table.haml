@@ -32,7 +32,7 @@
 								%th.text-right JC
 								%th.text-right NU
 								%th.text-right GC
-								%th.text-right Palm
+								%th.text-right MOM
 								%th.text-right Total
 						%tbody
 							- @points.each do |p|
@@ -52,7 +52,7 @@
 									%td.text-right= p.nu || '-'
 									%td.text-right= p.gc || '-'
 									%td.text-right= p.palm || '-'
-									%td.text-right= p.total_points || '-'
+									%td.text-right= p.total_points ? p.total_points.round : '-'
 				- else
 					.div.empty
 						%i{class: "fa fa-frown-o"}
