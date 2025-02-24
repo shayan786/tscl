@@ -19,16 +19,22 @@ class GameController < ActionController::Base
 		if !current_user.is_captain
 			redirect_to '/'
 		end
-		
+
 		@games = []
+    # only show game if prior to game day
+    today = Date.today
 
 		current_user.clubs.each do |c|
 			Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(home_id: c.id).each do |g|
-				@games.push(g)
+        if (today < g.date)
+				  @games.push(g)
+        end
 			end
 
 			Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(away_id: c.id).each do |g|
-				@games.push(g)
+				if (today < g.date)
+          @games.push(g)
+        end
 			end
 		end
 	end
