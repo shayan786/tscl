@@ -1,7 +1,7 @@
 .row
 	.col-md-8
 		.card.umpire-evaluations-list
-			.card-header Umpire Evaluations
+			.card-header Umpire Evaluations Due by Wednesday 7p
 			.card-body
 				- if flash[:notice]
 					.alert.alert-success{:role => "alert"}
@@ -28,9 +28,8 @@
 									%td= f.get_away_acronym
 									%td= f.get_umpire_acronym
 									%td.text-center.actions
-										- if f.date < Time.now
-											%a{href: "/game/umpire-evaluations/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Evaluation", "data-placement" => "bottom"}
-												%i{class: "fa fa-check-square"}
+										%a{href: "/game/umpire-evaluations/form/#{f.id}", "data-toggle" => "tooltip", title: "Complete Evaluation", "data-placement" => "bottom"}
+											%i{class: "fa fa-check-square"}
 										%a{href: "/game/#{f.id}", "data-toggle" => "tooltip", title: "Game Info.", "data-placement" => "bottom"}
 											%i{class: "fa fa-info-circle"}
 				- else

@@ -91,6 +91,12 @@ nav {
       height: 1px;
       background: rgba(255,255,255, 0.5);
     }
+
+    .currentTime {
+      border-top: 1px solid rgba(255,255,255, 0.5);
+      text-align: center;
+      padding-top: 0.5rem;
+    }
   }
 }
 

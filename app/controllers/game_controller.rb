@@ -178,14 +178,23 @@ class GameController < ActionController::Base
     end
 
     @fixtures = []
+    # only show game if prior to game day and today is prior to next wed 7p.
+    today = Date.today
+    this_week_start = today.beginning_of_week
+    last_week_start = this_week_start - 1.week
+    next_wednesday_7pm = (today.next_occurring(:wednesday) + 19.hours) # Adds 19 hours to get to 7pm
 
     current_user.clubs.each do |c|
-      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(home_id: c.id).each do |g|
-        @fixtures.push(g)
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(home_id: c.id, date: last_week_start..next_wednesday_7pm.to_date).each do |g|
+        if g.date < next_wednesday_7pm
+          @fixtures.push(g)
+        end
       end
 
-      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(away_id: c.id).each do |g|
-        @fixtures.push(g)
+      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(away_id: c.id, date: last_week_start..next_wednesday_7pm.to_date).each do |g|
+        if g.date < next_wednesday_7pm
+          @fixtures.push(g)
+        end
       end
     end
   end
@@ -262,10 +271,20 @@ class GameController < ActionController::Base
     end
 
     @fixtures = []
+    # only show game if prior to game day and today is prior to next wed 7p.
+    today = Date.today
+    this_week_start = today.beginning_of_week
+    last_week_start = this_week_start - 1.week
+    next_wednesday_7pm = (today.next_occurring(:wednesday) + 19.hours) # Adds 19 hours to get to 7pm
 
     current_user.clubs.each do |c|
-      Season.find_by(year: Time.now.year, over_format: $current_over_format).games.where(umpire_id: c.id).each do |g|
-        @fixtures.push(g)
+      current_season = Season.find_by(year: Time.now.year, over_format: $current_over_format)
+      games = current_season.games.where(umpire_id: c.id, date: last_week_start..next_wednesday_7pm.to_date)
+
+      games.each do |g|
+        if g.date < next_wednesday_7pm
+          @fixtures.push(g)
+        end
       end
     end
   end

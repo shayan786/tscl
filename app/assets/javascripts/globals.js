@@ -21,3 +21,16 @@ function adminMenuToggle () {
 		items.css('background-color', '#121212');
 	})
 }
+
+function showCurrentTime () {
+	updateTime()
+	setInterval(() => {
+		updateTime()
+	}, 15000)
+}
+
+function updateTime () {
+	const currentTime = new Date().toLocaleTimeString();
+	const timeEl = $('.currentTime');
+	timeEl.html(currentTime);
+}

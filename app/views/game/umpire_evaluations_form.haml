@@ -3,78 +3,81 @@
 		.card.umpire-evaluation-form
 			.card-header Umpire Evaluation
 			.card-body
-				.item
-					.item__label Date
-					.item__value= @game.date.strftime("%b %e")
-				.item
-					.item__label Ground
-					.item__value= @game.ground
-				.item
-					.item__label Neutral Umpire
-					.item__value= @game.get_umpire_name
-				.item
-					.item__label Neutral Umpire Level
-					.item__value= @game.get_umpire_level
-				.divider
-				= form_with(url: '/game/umpire-evaluations/new', method: 'post', local: true) do
-					%input{type: 'hidden', name: 'umpire_evaluation[game_id]', value: "#{@game.id}"}
-					.row
-						.form-group.col-md-5
-							%label Start of play
-							%input.form-control{name: 'umpire_evaluation[start_time]', required: true}
-					.row
-						.form-group.col-md-5
-							%label Match result
-							%select.form-control{name: 'umpire_evaluation[nu_match_result]'}
-								%option{value: "home_win"} Home Win
-								%option{value: "away_win"} Away Win
-								%option{value: "tie"} Tie
-					%table.table.table-dark
-						%thead
-							%tr
-								%th Neutral Umpire
-								%th.text-center Excellent
-								%th.text-center Fair
-								%th.text-center Poor
-								%th.text-center N/A
-						%tbody
-							- UmpireEvaluation.neutral_umpire_options.each do |o|
+				- if @game.is_within_allowed_time
+					.item
+						.item__label Date
+						.item__value= @game.date.strftime("%b %e")
+					.item
+						.item__label Ground
+						.item__value= @game.ground
+					.item
+						.item__label Neutral Umpire
+						.item__value= @game.get_umpire_name
+					.item
+						.item__label Neutral Umpire Level
+						.item__value= @game.get_umpire_level
+					.divider
+					= form_with(url: '/game/umpire-evaluations/new', method: 'post', local: true) do
+						%input{type: 'hidden', name: 'umpire_evaluation[game_id]', value: "#{@game.id}"}
+						.row
+							.form-group.col-md-5
+								%label Start of play
+								%input.form-control{name: 'umpire_evaluation[start_time]', required: true}
+						.row
+							.form-group.col-md-5
+								%label Match result
+								%select.form-control{name: 'umpire_evaluation[nu_match_result]'}
+									%option{value: "home_win"} Home Win
+									%option{value: "away_win"} Away Win
+									%option{value: "tie"} Tie
+						%table.table.table-dark
+							%thead
 								%tr
-									%td= o[:title]
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'excellent', checked: 'true'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'fair'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'poor'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'N/A'}
-					%table.table.table-dark
-						%thead
-							%tr
-								%th Batting Team's Leg Umpire
-								%th.text-center Excellent
-								%th.text-center Fair
-								%th.text-center Poor
-								%th.text-center N/A
-						%tbody
-							- UmpireEvaluation.leg_umpire_options.each do |o|
+									%th Neutral Umpire
+									%th.text-center Excellent
+									%th.text-center Fair
+									%th.text-center Poor
+									%th.text-center N/A
+							%tbody
+								- UmpireEvaluation.neutral_umpire_options.each do |o|
+									%tr
+										%td= o[:title]
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'excellent', checked: 'true'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'fair'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'poor'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'N/A'}
+						%table.table.table-dark
+							%thead
 								%tr
-									%td= o[:title]
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'excellent', checked: 'true'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'fair'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'poor'}
-									%td.text-center
-										%input{type: "radio", name: "#{o[:name]}", value: 'N/A'}
-					.form-group
-						%label Comments
-						%textarea.form-control{rows: 6, name: 'umpire_evaluation[comments]', placeholder: 'Optional'}
-					.actions
-						%input.btn.btn-primary{type: 'submit', value: 'Submit'}
-						%a{href: '/game/umpire-evaluations/captain'} Cancel
+									%th Batting Team's Leg Umpire
+									%th.text-center Excellent
+									%th.text-center Fair
+									%th.text-center Poor
+									%th.text-center N/A
+							%tbody
+								- UmpireEvaluation.leg_umpire_options.each do |o|
+									%tr
+										%td= o[:title]
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'excellent', checked: 'true'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'fair'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'poor'}
+										%td.text-center
+											%input{type: "radio", name: "#{o[:name]}", value: 'N/A'}
+						.form-group
+							%label Comments
+							%textarea.form-control{rows: 6, name: 'umpire_evaluation[comments]', placeholder: 'Optional'}
+						.actions
+							%input.btn.btn-primary{type: 'submit', value: 'Submit'}
+							%a{href: '/game/umpire-evaluations/captain'} Cancel
+				- else
+					This report cannot be completed, it is outside it's allocated time!
 	.col-md-4
 		= render 'shared/points_table'
 		= render 'shared/upcoming_matches'
