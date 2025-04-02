@@ -34,3 +34,7 @@ function updateTime () {
 	const timeEl = $('.currentTime');
 	timeEl.html(currentTime);
 }
+
+function loadLiveScore () {
+	$('#liveScore').load('https://cricclubs.com/TSCL1 #resultsDiv');
+}
