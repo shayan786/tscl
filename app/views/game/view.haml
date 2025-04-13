@@ -3,34 +3,6 @@
 		.card.game
 			.card-header= "Game - #{@game.get_home_acronym} vs #{@game.get_away_acronym} on #{@game.date.strftime("%b %e")}"
 			.card-body
-				.h5= "Home Team - #{@game.get_home_acronym}"
-				- if @game.hc
-					.confirm__time
-						.confirm__label Confirmed at
-						= @game.get_home_comment.created_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
-					.confirm__time
-						.confirm__label Confirmed by
-						= @game.get_home_comment.user.get_full_name
-					.confirm__comments
-						.confirm__label Comments
-						= @game.get_home_comment.content
-				- else
-					.confirm__nope Not yet confirmed.
-				.divider
-				.h5= "Away Team - #{@game.get_away_acronym}"
-				- if @game.ac
-					.confirm__time
-						.confirm__label Confirmed at
-						= @game.get_away_comment.created_at.in_time_zone("Central Time (US & Canada)").strftime("%b - %e at %l:%M %p")
-					.confirm__time
-						.confirm__label Confirmed by
-						= @game.get_away_comment.user.get_full_name
-					.confirm__comments
-						.confirm__label Comments
-						= @game.get_away_comment.content
-				- else
-					.confirm__nope Not yet confirmed.
-				.divider
 				.h5= "Umpire - #{@game.get_umpire_acronym}"
 				- if @game.uc
 					.confirm__time
