@@ -125,11 +125,9 @@ class Game < ApplicationRecord
 
 	def is_within_allowed_time
 		today = Date.today
-    this_week_start = today.beginning_of_week
-    last_week_start = this_week_start - 1.week
-    next_wednesday_7pm = (today.next_occurring(:wednesday) + 19.hours) # Adds 19 hours to get to 7pm
+    next_wednesday_7pm = (self.date.next_occurring(:wednesday) + 19.hours) # Adds 19 hours to get to 7pm
 
-		self.date < next_wednesday_7pm && self.date > last_week_start
+		today < next_wednesday_7pm && today >= self.date
 	end
 
 	rails_admin do
