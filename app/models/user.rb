@@ -33,6 +33,7 @@ class User < ApplicationRecord
 
   	create do
       field :tscl_id
+      field :cric_club_id
   		field :last_name
   		field :first_name
       field :password
@@ -47,6 +48,7 @@ class User < ApplicationRecord
 
   	edit do
       field :tscl_id
+      field :cric_club_id
   		field :last_name
   		field :first_name
   		field :email
@@ -61,6 +63,7 @@ class User < ApplicationRecord
 
   	list do
       field :tscl_id
+      field :cric_club_id
   		field :last_name
   		field :first_name
   		field :email
@@ -73,6 +76,7 @@ class User < ApplicationRecord
 
     import do
       field :tscl_id
+      field :cric_club_id
       field :last_name
       field :first_name
       field :password

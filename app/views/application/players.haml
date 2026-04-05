@@ -8,6 +8,7 @@
 						%thead
 							%tr
 								%th TSCL ID
+								%th Cric Club ID
 								%th Last Name
 								%th First Name
 								%th Clubs (s)
@@ -16,6 +17,7 @@
 							- @players.each do |p|
 								%tr
 									%td= p.tscl_id
+									%td= p.cric_club_id
 									%td= p.last_name
 									%td= p.first_name
 									%td
