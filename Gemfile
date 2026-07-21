@@ -1,79 +1,133 @@
+# source 'https://rubygems.org'
+# git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+# ruby '~> 2.7.6'
+
+# # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+# gem 'rails', '~> 6.0.6'
+# # Use postgresql as the database for Active Record
+# gem 'pg', '~> 1.1'
+# # Use Puma as the app server
+# gem 'puma', '~> 4.1'
+# # Use SCSS for stylesheets
+# gem 'sass-rails', '~> 6.0'
+# # Use Uglifier as compressor for JavaScript assets
+# gem 'uglifier', '>= 1.3.0'
+# # See https://github.com/rails/execjs#readme for more supported runtimes
+# # gem 'mini_racer', platforms: :ruby
+
+# # Use CoffeeScript for .coffee assets and views
+# gem 'coffee-rails', '~> 4.2'
+# # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# gem 'turbolinks', '~> 5'
+# # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+# gem 'jbuilder', '~> 2.5'
+# # Use Redis adapter to run Action Cable in production
+# # gem 'redis', '~> 4.0'
+# # Use ActiveModel has_secure_password
+# # gem 'bcrypt', '~> 3.1.7'
+
+# gem 'rails_admin', '~> 2.0'
+# # gem 'rails_admin_import', '~> 2.2'
+# gem "haml-rails", "~> 1.0"
+# gem 'bootstrap', '~> 4.4.1'
+# gem 'jquery-rails'
+# gem 'font-awesome-rails'
+# gem 'devise'
+# gem 'ffi', '~> 1.15.5'
+# #gem 'mini_magick'
+
+# # Use ActiveStorage variant
+# gem 'mini_magick', '~> 4.8'
+
+# # Use Capistrano for deployment
+# # gem 'capistrano-rails', group: :development
+
+# # Reduces boot times through caching; required in config/boot.rb
+# gem 'bootsnap', '>= 1.4.4', require: false
+
+# group :development, :test do
+#   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+#   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+# end
+
+# group :development do
+#   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
+#   gem 'web-console', '>= 3.3.0'
+#   gem 'listen', '>= 3.0.5', '< 3.2'
+#   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+#   gem 'spring'
+#   gem 'spring-watcher-listen', '~> 2.0.0'
+#   gem 'guard'
+#   gem 'guard-livereload', '~> 2.5', require: false
+#   gem "rack-livereload"
+#   gem 'capistrano',         require: false
+#   gem 'capistrano-rvm',     require: false
+#   gem 'capistrano-rails',   require: false
+#   gem 'capistrano-bundler', require: false
+#   gem 'capistrano3-puma',   require: false
+# end
+
+# group :test do
+#   # Adds support for Capybara system testing and selenium driver
+#   # gem 'capybara', '>= 2.15'
+#   # gem 'selenium-webdriver'
+#   # Easy installation and use of chromedriver to run system tests with Chrome
+#   # gem 'chromedriver-helper'
+# end
+
+# # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+#------
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '~> 2.6.0'
+ruby '~> 3.4.2'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
-# Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
-# Use Puma as the app server
-gem 'puma', '~> 3.11'
-# Use SCSS for stylesheets
+# Core Framework Target
+gem 'rails', '~> 8.0.0'
+
+# Database Adapter (Modern versions support arm64 natively)
+gem 'pg', '~> 1.5'
+gem 'puma', '~> 6.4'
+
+# Legacy Asset Pipeline Support (Keeps your asset files working without a total rewrite today)
+gem 'sprockets-rails'
 gem 'sass-rails', '~> 6.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'mini_racer', platforms: :ruby
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.5'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-gem 'rails_admin', '~> 2.0'
-gem 'rails_admin_import', '~> 2.2'
-gem "haml-rails", "~> 1.0"
-gem 'bootstrap', '~> 4.4.1'
+# Modern Engines & Authentication
+gem 'devise', '~> 4.9'
+gem 'rails_admin', '~> 3.1' # Modern Rails 7/8 compatible engine
+gem 'rails_admin_import', '~> 3.0'
+gem 'haml-rails'
+gem 'bootstrap', '~> 4.6'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
-gem 'devise'
-#gem 'mini_magick'
+gem 'mini_magick'
 
-# Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+# Optimization
+gem 'bootsnap', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :development do
-  # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'guard'
-  gem 'guard-livereload', '~> 2.5', require: false
-  gem "rack-livereload"
+  gem 'web-console'
+  gem 'listen'
+  
+  # Deployment
   gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
+  gem 'capistrano-passenger', require: false # Swapped out older puma configs if using passenger, or use modern capistrano3-puma
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano3-puma', require: false
+  gem 'capistrano-rbenv', require: false
 end
 
 group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers' 
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

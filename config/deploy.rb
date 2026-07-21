@@ -4,7 +4,7 @@ server '198.199.107.13', port: 22, roles: [:web, :app, :db], primary: true
 set :repo_url,        'git@github.com:shayan786/tscl.git'
 set :application,     'tscl'
 set :user,            'deploy'
-set :puma_threads,    [4, 16]
+set :puma_threads,    [2, 4]
 set :puma_workers,    0
 
 # Don't change these unless you know what you're doing
