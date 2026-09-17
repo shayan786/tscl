@@ -28,6 +28,19 @@ class User < ApplicationRecord
     end
   end
 
+  def archive_and_reassign!(fallback_user)
+    raise "Cannot reassign to self" if self.id == fallback_user.id
+    
+    transaction do
+      comments.update_all(user_id: fallback_user.id)
+      umpire_evaluations.update_all(user_id: fallback_user.id)
+      match_reports.update_all(user_id: fallback_user.id)
+      moms.update_all(user_id: fallback_user.id)
+      # Now safe to delete without losing relational data
+      destroy!
+    end
+  end
+
   rails_admin do
     object_label_method :get_full_name
 
